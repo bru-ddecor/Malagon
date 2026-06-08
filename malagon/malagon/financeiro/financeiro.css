@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+    padding-top: 60px;
+    margin-top: 0;
+    margin: 10px;
+    background-color: #141516;
+}
+
+h1 {
+    color: #fff;
+}
+
+/* ===== NAVBAR ===== */
+.nav {
+    position: absolute;
+    width: 100%;
+    top: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 50px;
+    color: white;
+
+    z-index: 3;
+}
+
+/* LOGO */
+.logo {
+    font-weight: bold;
+    color: orange;
+}
+
+/* LINKS */
+.links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+/* LINK ATIVO */
+.links .ativo {
+    background: orange;
+    padding: 6px 12px;
+    border-radius: 10px;
+}
+
+/* BOTÃO LOGIN */
+.login {
+    background: orange;
+    padding: 6px 12px;
+    border-radius: 10px;
+}
+
+header{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+header h1{
+    font-size: 42px;
+    font-weight: 700;
+}
+
+header p{
+    color: #888;
+}
+
+.custos, .valores{
+    background: #18191d;
+    border: 1px solid #24252a;
+    border-radius: 14px;
+}
+
+.custos{
+    width:35%;
+    float:left;
+    padding:25px;
+    margin-bottom: 30px;
+}
+
+.valores{
+    width:62%;
+    float:right;
+    padding:25px;
+    
+}
+
+.custos ul{
+    list-style: none;
+}
+
+.custos li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #2b2c31;
+}
+
+.custos li:last-child{
+    border-bottom: none;
+}
+
+.custos li p{
+    color: #fff;
+}
+.custos li h4{
+    font-weight: 700;
+    color: #fff;
+}
+
+/* ==== SIMULADOR ==== */
+.valores h3{
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #fff;
+    font-weight: 200;
+}
+
+.calculo{
+    display: inline-block;
+    width: 48%;
+}
+.calculo p{
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.calculo h4{
+    color: #f09554;
+    font-size: 20px;
+}
+
+/* ==== BOTÃO ==== */
+
+button{
+    width: 100%;
+    margin-top: 50px;
+    padding: 18px;
+    background: #23262d;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s;
+    
+}
+
+button:hover{
+    background:#2d313a;
+}
+
+/* ==== CARDS INFERIORES ==== */
+.dados{
+    display: flex;
+    justify-content: space-between;
+    clear: both; /* Impede a sobreposição*/
+    margin-top: 30px;
+}
+.dados .card{
+    background: rgb(31, 31, 31);
+    border: 1px solid #2d313a;
+    border-radius: 14px;
+    width: 32%;
+    padding: 25px;
+    border: none;
+    gap: 15px;
+}
+
+.card h3{
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.card p{
+    color: #888;
+    font-size: 14px;
+}
