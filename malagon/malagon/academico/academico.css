@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+
+body{
+  padding-top: 60px;
+  margin-top: 0;
+  margin: 10px;
+}
+h1{
+  color: #fff;
+}
+/* ===== NAVBAR ===== */
+.nav {
+  position: absolute;
+  width: 100%;
+  top: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 50px;
+  color: white;
+
+  z-index: 3;
+}
+
+/* LOGO */
+.logo {
+  font-weight: bold;
+  color: orange;
+}
+
+/* LINKS */
+.links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+/* LINK ATIVO */
+.links .ativo {
+  background: orange;
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+/* BOTÃO LOGIN */
+.login {
+  background: orange;
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+/* LINHAS */
+.line{
+    width: 82%;
+    height: 3px;
+    border-radius: 15px;
+}
+
+.green{
+    background: green;
+}
+.gray{
+    background: grey;
+}
+
+h1{
+    font-size: 52px;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+body > p{
+    color: #9a9a9a;
+    max-width: 750px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* CARD */
+
+body .card{
+    width: 100%;
+    background: linear-gradient(135deg, #1b1c1d, #232426);
+    border: 1px solid #2d2e31;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.35);
+    padding: 20px;
+    
+}
+
+body .card h3{
+    color: white;
+    margin-bottom: 8px;
+}
+
+body .card p{
+    font-size: 15px;
+    margin-bottom: 110px;
+    color: #9a9a9a;
+    
+}
+
+body .card:hover {
+  transform: translateY(-5px);
+  border-color: orange;
+}
+.estudos{
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.card button{
+  margin: 10px;
+  padding: 15px;
+}
+
+h2{
+  color: #fff;
+}
+h3{
+  color: #fff;
+}
+
+.teste button{
+  background: #FF7A1A;
+  color: white;
+  border: none;
+  padding: 15px 15px;
+}
+
+.avanco{
+  width: 100%;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #1b1c1d, #232426);
+  padding: 20px;
+  margin-top: 5px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avanco h3{
+  margin: 0;
+}
+.avanco p{
+  margin: 0;
+  color: #9a9a9a;
+}
+
+.evolucao{
+  width: 100%;
+  background: linear-gradient(135deg, #1b1c1d, #232426);
+  border: 1px solid #2d2e31;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.35);
+
+  padding: 20px;
+  margin-top: 20px;
+
+  color: white;
+}
+
+.evolucao h3{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.evolucao p{
+  color: #9a9a9a;
+  line-height: 1.5;
+}
+
+.evolucao button{
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: orange;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

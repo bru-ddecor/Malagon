@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #0b0b0b;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ====================== NAVBAR ====================== */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 60px;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 122, 0, 0.1);
+}
+
+.logo {
+    color: #ff7a00;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.links {
+    display: flex;
+    gap: 35px;
+}
+
+.links a {
+    color: #c5c5c5;
+    text-decoration: none;
+    transition: .3s;
+    font-weight: 500;
+}
+
+.links a:hover {
+    color: white;
+}
+
+/* ====================== CARD1 - CONFIGURAÇÕES LOCAIS ====================== */
+
+.container {
+    margin-top: 130px;
+    margin-left: 150px;
+    margin-right: auto;           /* Centraliza horizontalmente */
+    padding: 45px 40px;
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid rgba(255, 122, 0, 0.25);
+    border-radius: 20px;
+    max-width: 680px;             /* Mantém largura controlada */
+    width: 100%;                  /* Responsivo */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+}
+
+
+/* Textos do topo do card */
+.route {
+    color: #ff7a00;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.card1 h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #aaaaaa;
+    font-size: 15.5px;
+    line-height: 1.5;
+    margin-bottom: 35px;
+}
+
+/* ====================== WRAPPER DO SELECTION (Novo) ====================== */
+.selection-wrapper {
+    margin-top: 10px;
+}
+
+/* ====================== LAYOUT ORIGEM + DESTINO ====================== */
+
+.localizacao {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* ====================== TIMELINE ====================== */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+/*
+.point {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 3px solid #ff7a00;
+}
+
+.origin {
+    background: #ff7a00;
+}
+
+.lined1 {
+    width: 3px;
+    height: 100px;
+    background: #fff9f3;
+    margin: 20px 0;
+    
+   
+
+}
+.line2 {
+    width: 3px;
+    height: 100px;
+    background: #ff7a00;
+    margin: 20px 0;
+}
+*/
+/* ====================== CARDS DE ORIGEM E DESTINO ====================== */
+
+.infocard_1 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #999;
+    margin-left: 6px;
+}
+
+.card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.card:hover {
+    border-color: #ff7a00;
+    background: rgba(255,122,0,0.08);
+}
+
+select {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 17px;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+}
+
+.arrow {
+    color: #ff7a00;
+    font-size: 24px;
+    pointer-events: none;
+}
+
+select option {
+    background: #1a1a1a;
+    color: white;
+}
+
+select option:hover {
+    background: #ff7a00;
+    color: black;
+}
+
+/* ====================== BOTÃO SWAP ====================== */
+.swap-btn {
+    width: 52px;
+    height: 52px;
+    background: rgba(255,122,0,0.1);
+    border: 2px solid rgba(255,122,0,0.4);
+    border-radius: 50%;
+    color: #ff7a00;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    flex-shrink: 0;
+    margin: 8px 0;
+}
+
+.swap-btn:hover {
+    background: #ff7a00;
+    color: black;
+    transform: rotate(180deg) scale(1.1);
+}
+
+/* ====================== BOTÃO CONFIRMAR ====================== */
+.confirmar {
+    margin-top: 15px;
+    padding: 18px 30px;
+    background: linear-gradient(90deg, #ff7a00, #ff9a30);
+    color: black;
+    font-weight: 700;
+    font-size: 17px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.confirmar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 122, 0, 0.4);
+}
+
+/* ====================== CARDS LATERAIS ====================== */
+.infocard_2, .infocard_3 {
+    position: absolute;
+    top: 180px;
+    width: 280px;
+    padding: 25px;
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.infocard_2 {
+    right: 80px;
+}
+
+.infocard_3 {
+    right: 380px;
+}
+
+.infocard_2 h1, .infocard_3 h1 {
+    font-size: 15px;
+    color: #aaaaaa;
+    margin-bottom: 8px;
+}
+
+.infocard_2 p, .infocard_3 p {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 1200px) {
+    .infocard_2, .infocard_3 {
+        position: static;
+        margin-top: 20px;
+    }
+}
+/*mapa*/
+.map-card{
+    position: absolute;
+    top: 340px;
+    right: 80px;
+    width: 580px;
+    height: 320px;
+
+    background: rgba(20,20,20,.8);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+#map{   
+   width:100%;
+    height:100%;
+    border-radius:16px;
+}
+
+/* Tema escuro do Leaflet */
+.leaflet-container{
+    background: #111;
+}

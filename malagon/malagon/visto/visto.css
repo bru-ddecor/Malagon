@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #0b0b0b;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ====================== NAVBAR ====================== */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 60px;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 122, 0, 0.1);
+}
+
+.logo {
+    color: #ff7a00;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.links {
+    display: flex;
+    gap: 35px;
+}
+
+.links a {
+    color: #c5c5c5;
+    text-decoration: none;
+    transition: .3s;
+    font-weight: 500;
+}
+
+.links a:hover {
+    color: white;
+}
