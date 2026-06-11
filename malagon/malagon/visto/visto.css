@@ -48,3 +48,11 @@ body {
 .links a:hover {
     color: white;
 }
+.cardsim {
+    margin-top: 130px;
+    margin-left: 150px;
+      background: rgba(20, 20, 20, 0.85);          /* Centraliza horizontalmente */
+    padding: 45px 40px;
+    
+    
+}
