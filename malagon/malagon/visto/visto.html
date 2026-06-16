@@ -1,32 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visto</title>
     <link rel="stylesheet" href="visto.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
-<body style="background-color: #141516;">
+<body>
+    <!-- NAVBAR -->
     <div class="nav">
-        <div class="logo">MALAGON</div>
-
+        <div class="logo">Malagon</div>
         <div class="links">
             <a href="../home/home.html">Home</a>
-            <a href="../local/local.html">Localidade</a>
-            <a href="../academico/academico.html">Acadêmico</a>
+            <a href="../local/local.html">Localização</a>
             <a href="../financeiro/financeiro.html">Financeiro</a>
+            <a href="../academico/academico.html">Acadêmico</a>
             <a class="ativo" href="#">Visto</a>
             <a href="../login/login.html" class="login">Login</a>
         </div>
     </div>
-<div class="cardsim">
-    <h1>Simulador de Visto</h1>
-    <p>Complete seu checklist obrigatorio para garantir 
-    </p>aprovação do seu processo de Intercâmbio.<br>
-</div>
-   
-</body>
 
+    <!-- CONTEUDO PRINCIPAL -->
+    <div class="page-wrapper">
+
+        <!-- CABECALHO -->
+        <div class="page-header">
+            <div class="header-left">
+                <h1>Simulador de Visto</h1>
+                <p>Complete seu checklist obrigatório para garantir a aprovação do seu processo de Intercâmbio.</p>
+            </div>
+            <div class="progresso-box">
+                <span class="prog-label">PROGRESSO GERAL</span>
+                <span class="prog-valor">68%</span>
+                <div class="prog-bar-wrap">
+                    <div class="prog-bar" style="width: 68%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRID PRINCIPAL -->
+        <div class="main-grid">
+
+            <!-- COLUNA ESQUERDA: checklist + aviso + botao -->
+            <div class="col-left">
+
+                <!-- CHECKLIST -->
+                <div class="section-card">
+                    <div class="section-title-row">
+                        <span class="section-title">Checklist Obrigatório</span>
+                        <span class="items-restantes">4 ITENS RESTANTES</span>
+                    </div>
+
+                    <!-- Item VALID -->
+                    <div class="checklist-item checked">
+                        <div class="check-box checked">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M2 7L5.5 10.5L12 3.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="item-info">
+                            <span class="item-nome">Valid Passport</span>
+                            <span class="item-sub">EXPIRAÇÃO: JUN 2026</span>
+                        </div>
+                        <span class="badge valid">VALID</span>
+                    </div>
+
+                    <!-- Item PENDING -->
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="item-info">
+                            <span class="item-nome">Criminal Record</span>
+                            <span class="item-sub">AGUARDANDO EMISSÃO OFICIAL</span>
+                        </div>
+                        <span class="badge pending">PENDING</span>
+                    </div>
+
+                    <!-- Item VALID -->
+                    <div class="checklist-item checked">
+                        <div class="check-box checked">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M2 7L5.5 10.5L12 3.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="item-info">
+                            <span class="item-nome">Proof of Funds</span>
+                            <span class="item-sub">EXTRATOS BANCÁRIOS (3 MESES)</span>
+                        </div>
+                        <span class="badge valid">VALID</span>
+                    </div>
+
+                    <!-- Item PENDING -->
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="item-info">
+                            <span class="item-nome">Health Insurance</span>
+                            <span class="item-sub">SEGURO UMA INTERNACIONAL MÍNIMA: €30k</span>
+                        </div>
+                        <span class="badge pending">PENDING</span>
+                    </div>
+                </div>
+
+                <!-- AVISO -->
+                <div class="aviso-card">
+                    <span class="aviso-icon">ℹ️</span>
+                    <p>Documentos pendentes podem atrasar sua entrevista em até +15 dias úteis**. Recomendamos o upload imediato.</p>
+                </div>
+
+                <!-- BOTAO -->
+                <button class="btn-simulacao">NEW SIMULATION →</button>
+
+            </div>
+
+            <!-- COLUNA DIREITA: dicas + indice -->
+            <div class="col-right">
+
+                <!-- DICAS -->
+                <div class="section-card dicas-card">
+                    <span class="section-title">Dicas de Especialista</span>
+
+                    <div class="dica-item">
+                        <div class="dica-icon">🛂</div>
+                        <div class="dica-texto">
+                            <span class="dica-titulo">Foto do Passaporte</span>
+                            <p>Garanta que não haja reflexo na foto na página de identificação ao digitalizar.</p>
+                        </div>
+                    </div>
+
+                    <div class="dica-item">
+                        <div class="dica-icon">📄</div>
+                        <div class="dica-texto">
+                            <span class="dica-titulo">Tradução Juramentada</span>
+                            <p>Alguns consulados exigem tradução de extratos bancários para o idioma local.</p>
+                        </div>
+                    </div>
+
+                    <!-- Precisa de ajuda -->
+                    <div class="ajuda-box">
+                        <span class="ajuda-titulo">Precisa de ajuda?</span>
+                        <p>Nossos consultores especializados em vistos estão disponíveis para revisão manual.</p>
+                        <button class="btn-consultor">FALAR COM CONSULTOR</button>
+                    </div>
+                </div>
+
+                <!-- INDICE DE APROVACAO -->
+                <div class="section-card indice-card">
+                    <div class="indice-header">
+                        <span class="section-title">Índice de Aprovação</span>
+                        <span class="indice-tag">+12% este mês</span>
+                    </div>
+                    <p class="indice-sub">Dados baseados em 2.4k processos recentes</p>
+                    <div class="barras">
+                        <div class="barra" style="height:30px; background:#ff7a00;"></div>
+                        <div class="barra" style="height:50px; background:#ff7a00;"></div>
+                        <div class="barra" style="height:40px; background:#ff7a00;"></div>
+                        <div class="barra" style="height:70px; background:#ff7a00;"></div>
+                        <div class="barra" style="height:55px; background:#ff7a00;"></div>
+                        <div class="barra" style="height:90px; background:#4caf50;"></div>
+                        <div class="barra" style="height:75px; background:#4caf50;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
 </html>
