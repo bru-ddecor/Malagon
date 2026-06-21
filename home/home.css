@@ -433,15 +433,10 @@ h2{
 
 /* CTA */
 
-.cta{
+  .cta{
   margin:80px;
 
-  background:
-  linear-gradient(
-    135deg,
-    #1a1a1a,
-    #101010
-  );
+  background:linear-gradient(135deg,#1a1a1a,#101010);
 
   border-radius:24px;
 
@@ -452,79 +447,141 @@ h2{
   align-items:center;
 
   border:1px solid rgba(255,255,255,.05);
+  gap:40px;
 }
 
-.cta h2{
-  margin:0;
+/* TEXTO */
+
+.cta-text{
+  max-width:500px;
 }
 
-.cta button{
+.cta-text h2{
+  font-size:36px;
+}
+
+.cta-text p{
+  color:#aaa;
+  margin:15px 0 25px;
+}
+
+.cta-text button{
   background:white;
   color:black;
-
-  border:none;
-
-  padding:16px 28px;
-
+  padding:14px 26px;
   border-radius:10px;
-
+  border:none;
   cursor:pointer;
-
   font-weight:600;
+}
 
+/* CARD DIREITA */
+
+.cta-card{
+  width:300px;
+  background:#0d0d0d;
+  border-radius:16px;
+  padding:20px;
+
+  box-shadow:0 0 30px rgba(0,0,0,.5);
+}
+
+/* HEADER TIPO MAC */
+
+.card-header{
+  display:flex;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+.card-header span{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+}
+
+.card-header span:nth-child(1){ background:#ff5f56; }
+.card-header span:nth-child(2){ background:#ffbd2e; }
+.card-header span:nth-child(3){ background:#27c93f; }
+
+/* ITENS */
+
+.card-item{
+  margin-bottom:15px;
+}
+
+.card-item p{
+  font-size:12px;
+  color:#aaa;
+}
+
+.card-item span{
+  float:right;
+  font-size:12px;
+  color:#00ff88;
+}
+
+/* BARRA */
+
+.barra{
+  width:100%;
+  height:6px;
+  background:#222;
+  border-radius:10px;
+  margin-top:5px;
+  overflow:hidden;
+}
+
+.barra div{
+  height:100%;
+  background:#00ff88;
+}
+body{
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+/* FAZ O CONTEÚDO EMPURRAR O FOOTER */
+main{
+  flex:1;
+}
+
+/* FOOTER */
+
+.footer{
+  background:#0a0a0a;
+  border-top:1px solid rgba(255,255,255,.05);
+  padding:40px 80px;
+}
+
+.footer-content{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.footer h3{
+  color:#ff7a00;
+  margin-bottom:5px;
+}
+
+.footer p{  
+  color:#777;
+  font-size:12px;
+}
+
+.footer a{
+  color:#777;
+  margin-left:20px;
+  font-size:12px;
   transition:.3s;
 }
 
-.cta button:hover{
-  transform:scale(1.05);
+.footer a:hover{
+  color:white;
 }
 
-/* RESPONSIVO */
-
-@media(max-width:900px){
-
-  .hero{
-    padding:0 30px;
-    height:auto;
-    min-height:100vh;
-  }
-
-  .hero-content h1{
-    font-size:58px;
-  }
-
-  .nav{
-    padding:20px 30px;
-  }
-
-  .links{
-    display:none;
-  }
-
-  .info-cards{
-    grid-template-columns:1fr;
-
-    position:relative;
-
-    width:100%;
-
-    left:auto;
-    bottom:auto;
-
-    transform:none;
-
-    margin-top:40px;
-  }
-
-  .cta{
-    flex-direction:column;
-
-    gap:25px;
-
-    text-align:center;
-
-    margin:30px;
-  }
-  
-
+.footer .status{
+  color:#ff7a00;
 }

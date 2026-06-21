@@ -31,6 +31,7 @@ body {
     overflow-x: hidden;
 }
 
+
 /* ====================== NAVBAR ====================== */
 .nav {
     position: fixed;
@@ -67,6 +68,33 @@ body {
 
 .links a:hover {
     color: white;
+}
+
+/* LINHAS */
+.line{
+    width: 82%;
+    height: 3px;
+    border-radius: 15px;
+}
+
+.green{
+    background: green;
+}
+.gray{
+    background: grey;
+}
+
+h1{
+    font-size: 52px;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+body > p{
+    color: #9a9a9a;
+    max-width: 750px;
+    line-height: 1.5;
+    margin-bottom: 25px;
 }
 
 

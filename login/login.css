@@ -202,3 +202,21 @@ form {
     border: 2px solid #fff;
     box-shadow: none;
 }
+.btn-voltar {
+     backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.6);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 15px;
+    background: #222;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 9999; 
+}
+.btn-voltar:hover {
+    background: #444;
+}

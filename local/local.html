@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="local.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <title>Localização | Malagon</title>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <div class="nav">
+      <div class="logo"><a href="../home/home.html">Malagon</a></div>
+
+      <div class="links">
+        <a href="../home/home.html">Home</a>
+        <a class="ativo" href="#">Localização</a>
+        <a href="../financeiro/financeiro.html">Financeiro</a>
+        <a href="../academico/academico.html">Acadêmico</a>
+        <a href="../visto/visto.html">Visto</a>
+        <a href="../login/login.html" class="login">Login</a>
+      </div>
+    </div>
+
+    <div class="page-wrapper">
+
+      <!-- CABECALHO -->
+      <div class="page-header">
+        <div class="header-left">
+          <p class="route">ROUTE PROTOCOL</p>
+          <h1>Configurações Locais</h1>
+          <p>Informe seu país de origem e onde deseja ir para começar a simular.</p>
+        </div>
+      </div>
+
+      <!-- GRID PRINCIPAL -->
+      <div class="main-grid">
+
+        <!-- COLUNA ESQUERDA: seleção de rota -->
+        <div class="col-left">
+          <div class="section-card">
+            <div class="localizacao">
+
+              <!-- Timeline vertical -->
+              <div class="timeline">
+                <div class="point origin"></div>
+                <div class="line2"></div>
+                <div class="point destination"></div>
+              </div>
+
+              <!-- Origem + Destino -->
+              <div class="infocard_1">
+                <div class="info-group">
+                  <span class="label">ORIGEM</span>
+                  <div class="card busca-card">
+                    <input type="text" id="origemInput" placeholder="Digite o nome de uma cidade..." autocomplete="off">
+                    <ul class="sugestoes" id="origemSugestoes"></ul>
+                  </div>
+                </div>
+
+                <button class="swap-btn" onclick="trocarLocais()" aria-label="Trocar origem e destino">⇄</button>
+
+                <div class="info-group">
+                  <span class="label">DESTINO</span>
+                  <div class="card busca-card">
+                    <input type="text" id="destinoInput" placeholder="Digite o nome de uma cidade..." autocomplete="off">
+                    <ul class="sugestoes" id="destinoSugestoes"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="confirmar" onclick="atualizarMapa()">Confirmar Seleção →</button>
+          </div>
+        </div>
+
+        <!-- COLUNA DIREITA: estatísticas da rota -->
+        <div class="col-right">
+
+          <div class="section-card stat-card">
+            <span class="section-title">ESTIMATED DISTANCE</span>
+            <p class="stat-valor"><span id="distance">0</span> Km</p>
+            <div class="prog-bar-wrap">
+              <div class="prog-bar" id="distanceBar"></div>
+            </div>
+          </div>
+
+          <div class="section-card stat-card">
+            <span class="section-title">TRAVEL TIME</span>
+            <p class="stat-valor" id="travelTime">--</p>
+          </div>
+
+          <div class="section-card">
+            <div class="indice-header">
+              <span class="section-title">STATUS DA ROTA</span>
+              <span class="indice-tag">● Sincronizado</span>
+            </div>
+            <p class="indice-sub">Atualizado em tempo real conforme a seleção</p>
+            <div class="barras">
+              <div class="barra" style="height:30%; background:#ff7a00;"></div>
+              <div class="barra" style="height:55%; background:#ff7a00;"></div>
+              <div class="barra" style="height:40%; background:#ff7a00;"></div>
+              <div class="barra" style="height:70%; background:#ff7a00;"></div>
+              <div class="barra" style="height:50%; background:#ff7a00;"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MAPA -->
+      <div class="map-card">
+        <div id="map"></div>
+      </div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="local.js"></script>
+  </body>
+</html>
