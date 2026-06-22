@@ -5,7 +5,8 @@
     { href: '../financeiro/financeiro.html', label: 'Financeiro' },
     { href: '../academico/academico.html',   label: 'Acadêmico' },
     { href: '../visto/visto.html',           label: 'Visto' },
-    { href: '../login/login.html',           label: 'Login', classe: 'login' },
+    { href: '../local/local.html',           label: 'Localização' },
+    { href: '../login/login.html',           label: 'Login', classe: 'login' }
   ];
 
   function buildNav() {
