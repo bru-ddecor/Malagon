@@ -1,106 +1,218 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financeiro</title>a
+    <title>Financeiro | Malagon</title>
+    <link rel="stylesheet" href="../shared/navbar.css">
     <link rel="stylesheet" href="financeiro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div class="nav">
-        <div class="logo">Malagon</div>
 
-        <div class="links">
-            <a href="../home/home.html">Home</a>
-            <a href="../local/local.html">Localidade</a>
-            <a class="ativo" href="#">Financeiro</a>
-              <a href="../academico/academico.html">Acadêmico</a>
-            <a href="../visto/visto.html">Visto</a>
-            <a href="../login/login.html" class="login">Login</a>
+    <div class="page-wrapper">
+
+        <!-- CABECALHO -->
+        <div class="page-header">
+            <div>
+                <p class="subtitulo">FINANCIAL SIMULATION & BREAKDOWN</p>
+                <h1>Análise de Custos</h1>
+            </div>
+            <div class="cambio-box">
+                <span class="cambio-label">CÂMBIO BRL/EUR</span>
+                <span class="cambio-valor" id="cambioValor">carregando...</span>
+                <span class="cambio-sub" id="cambioData"></span>
+            </div>
+        </div>
+
+        <!-- SELETOR DE PAÍS -->
+        <div class="seletor-pais">
+            <label for="paisSelect">Simular custos para outro país:</label>
+            <div class="select-wrap">
+                <select id="paisSelect">
+                    <option value="ES" data-base="true">🇪🇸 Espanha (Málaga) — base</option>
+                    <option value="PT">🇵🇹 Portugal</option>
+                    <option value="DE">🇩🇪 Alemanha</option>
+                    <option value="FR">🇫🇷 França</option>
+                    <option value="IT">🇮🇹 Itália</option>
+                    <option value="NL">🇳🇱 Países Baixos</option>
+                    <option value="PL">🇵🇱 Polônia</option>
+                    <option value="CZ">🇨🇿 República Tcheca</option>
+                    <option value="SE">🇸🇪 Suécia</option>
+                    <option value="NO">🇳🇴 Noruega</option>
+                    <option value="CH">🇨🇭 Suíça</option>
+                    <option value="GB">🇬🇧 Reino Unido</option>
+                    <option value="US">🇺🇸 Estados Unidos</option>
+                    <option value="CA">🇨🇦 Canadá</option>
+                    <option value="AU">🇦🇺 Austrália</option>
+                    <option value="JP">🇯🇵 Japão</option>
+                    <option value="BR">🇧🇷 Brasil</option>
+                </select>
+                <span class="select-arrow">▾</span>
+            </div>
+            <span class="pais-status" id="paisStatus">Dados do Banco Mundial • <span id="paisAno"></span></span>
+        </div>
+
+        <!-- GRID PRINCIPAL -->
+        <div class="main-grid">
+
+            <!-- COLUNA ESQUERDA: lista de custos -->
+            <div class="col-left">
+                <div class="section-card">
+                    <div class="card-header">
+                        <span class="section-title">EXPENSE BREAKDOWN</span>
+                        <span class="pais-tag" id="paisTag">🇪🇸 Espanha</span>
+                    </div>
+
+                    <ul class="custos-lista" id="custosLista">
+                        <li>
+                            <div class="item-left">
+                                <span class="item-icon">🏠</span>
+                                <span class="item-nome">Moradia</span>
+                            </div>
+                            <span class="item-valor" data-base="550">€550,00</span>
+                        </li>
+                        <li>
+                            <div class="item-left">
+                                <span class="item-icon">🍽️</span>
+                                <span class="item-nome">Alimentação</span>
+                            </div>
+                            <span class="item-valor" data-base="250">€250,00</span>
+                        </li>
+                        <li>
+                            <div class="item-left">
+                                <span class="item-icon">🚌</span>
+                                <span class="item-nome">Transporte</span>
+                            </div>
+                            <span class="item-valor" data-base="45">€45,00</span>
+                        </li>
+                        <li>
+                            <div class="item-left">
+                                <span class="item-icon">📚</span>
+                                <span class="item-nome">Materiais</span>
+                            </div>
+                            <span class="item-valor" data-base="30">€30,00</span>
+                        </li>
+                        <li>
+                            <div class="item-left">
+                                <span class="item-icon">🏥</span>
+                                <span class="item-nome">Saúde</span>
+                            </div>
+                            <span class="item-valor" data-base="110">€110,00</span>
+                        </li>
+                        <li>
+                            <div class="item-left">
+                                <span class="item-icon">🎉</span>
+                                <span class="item-nome">Lazer</span>
+                            </div>
+                            <span class="item-valor" data-base="120">€120,00</span>
+                        </li>
+                    </ul>
+
+                    <!-- TOTAL -->
+                    <div class="total-box">
+                        <div>
+                            <span class="total-label">TOTAL MONTHLY COST</span>
+                            <div class="total-valor" id="totalEur">€ 1.105,00</div>
+                            <div class="total-brl" id="totalBrl">— em BRL</div>
+                        </div>
+                        <span class="total-note">↗ Estimativa baseada em médias regionais</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUNA DIREITA: simulador -->
+            <div class="col-right">
+                <div class="section-card simulador-card">
+
+                    <div class="sim-header">
+                        <div>
+                            <span class="section-title">INTERACTIVE SIMULATOR</span>
+                            <h3>Test your budget sustainability</h3>
+                        </div>
+                        <span class="live-badge">● LIVE CALCULATION</span>
+                    </div>
+
+                    <!-- SLIDERS -->
+                    <div class="sliders">
+                        <div class="slider-group">
+                            <div class="slider-top">
+                                <span>Orçamento Estimado</span>
+                                <strong id="orcamentoValor">€ 1.500</strong>
+                            </div>
+                            <input type="range" id="orcamento" min="500" max="5000" step="50" value="1500">
+                            <div class="slider-extremos"><span>€500</span><span>€5.000</span></div>
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-top">
+                                <span>Duração</span>
+                                <strong id="duracaoValor" style="color:#ff7a00">12 Meses</strong>
+                            </div>
+                            <input type="range" id="duracao" min="1" max="36" step="1" value="12">
+                            <div class="slider-extremos"><span>1 mês</span><span>36 meses</span></div>
+                        </div>
+                    </div>
+
+                    <!-- RESULTADO -->
+                    <div class="resultado-grid" id="resultadoGrid">
+                        <div class="resultado-card ok" id="cardOrcamento">
+                            <div class="resultado-icone">✓</div>
+                            <div>
+                                <span class="resultado-titulo" id="resultadoTitulo">Orçamento Viável</span>
+                                <span class="resultado-sub" id="resultadoSub">SAFETY MARGIN: €395</span>
+                            </div>
+                        </div>
+                        <div class="resultado-card neutro" id="cardTotal">
+                            <div class="resultado-icone">⚠</div>
+                            <div>
+                                <span class="resultado-titulo">Custo Total</span>
+                                <span class="resultado-sub" id="custoTotalSub">€13.260 em 12 meses</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BOTÃO -->
+                    <button class="btn-relatorio" id="btnRelatorio">
+                        Gerar Relatório Financeiro →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARDS INFERIORES -->
+        <div class="cards-inferiores">
+            <div class="info-card">
+                <div class="info-icone">💡</div>
+                <h4>Cost Optimization</h4>
+                <p>Considere compartilhar acomodação em zonas de "Habitação Estudantil" para reduzir o aluguel em até 30%.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icone">✅</div>
+                <h4>Verified Data</h4>
+                <p>Índices de custo de vida atualizados com dados do Banco Mundial e taxas de câmbio em tempo real.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icone">💱</div>
+                <h4>Exchange Rates</h4>
+                <p>Câmbio BRL/EUR consultado em tempo real via Frankfurter API. Margem de 1,5% para transferências internacionais.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL DE RELATÓRIO -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Relatório Financeiro</h2>
+                <button class="modal-fechar" id="modalFechar">✕</button>
+            </div>
+            <div class="modal-corpo" id="modalCorpo"></div>
         </div>
     </div>
-    <header>
-        <h1>Análise de Custos</h1>
-    </header>
 
-    <section class="custos">
-        <ul>
-            <li>
-                <p>Moradia</p>
-                <h4>€550,00</h4>
-            </li>
-
-            <li>
-                <p>Comida</p>
-                <h4>€250,00</h4>
-            </li>
-
-            <li>
-                <p>Transporte</p>
-                <h4>€45,00</h4>
-            </li>
-
-            <li>
-                <p>Materiais</p>
-                <h4>€30,00</h4>
-            </li>
-
-            <li>
-                <p>Saúde</p>
-                <h4>€110,00</h4>
-            </li>
-
-            <li>
-                <p>Moradia</p>
-                <h4>€550,00</h4>
-            </li>
-
-            <li>
-                <p>Lazer</p>
-                <h4>€120,00</h4>
-            </li>
-
-        </ul>
-    </section><br>
-
-    <section class="valores">
-        <h3>Teste seu orçamento sustentável</h3><br>
-
-        <div class="calculo">
-            <p>Orçamento Estimado</p>
-            <h4>€1.500,00</h4>
-        </div>
-        <div class="calculo">
-            <p>Duração</p>
-            <h4>12 Meses</h4>
-        </div>
-        <button>Gerar Relatório Financeiro -></button>
-    </section><br>
-
-    <section class="dados">
-        <div class="card">
-            <h3>Otimização de Custos</h3>
-            <p>Considere compartilhar acomodação em zonas de “Habitação Estudantil” para reduzir o aluguel em até 30%.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Dados Verificados</h3>
-            <p>Custos atualizados semanalmente com base em dados de inflação e relatórios de agências parceiras da
-                Malagon.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Taxas de Câmbio</h3>
-            <p>Simuladas com uma margem de conversão em tempo real de 1,5% para transferências internacionais.</p>
-        </div>
-    </section><br>
-    <footer></footer>
-
-
+    <script src="financeiro.js"></script>
+    <script src="../shared/navbar.js"></script>
 </body>
-
 </html>

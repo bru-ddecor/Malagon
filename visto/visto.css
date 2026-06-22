@@ -6,62 +6,13 @@
 }
 
 body {
-    background: #0f1011;
-    color: white;
+    background: var(--bg-body);
+    color: var(--color-text);
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* ====================== NAVBAR ====================== */
-/* NAVBAR */
-
-.nav{
-  position:absolute;
-
-  top:0;
-  left:0;
-
-  width:100%;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  padding:25px 60px;
-
-  z-index:20;
-
-  background:rgba(10,10,10,.35);
-
-  backdrop-filter:blur(12px);
-}
-
-.logo{
-  color:#ff7a00;
-
-  font-size:28px;
-  font-weight:700;
-}
-
-/* LINKS */
-
-.links{
-  display:flex;
-  gap:35px;
-}
-
-.links a{
-  color:#c5c5c5;
-
-  text-decoration:none;
-
-  transition:.3s;
-}
-
-.links a:hover{
-  color:white;
-}
-
+/* navbar styles moved to shared/navbar.css */
 
 /* ====================== PAGE WRAPPER ====================== */
 .page-wrapper {
@@ -397,3 +348,55 @@ body {
 }
 
 .barra:hover { opacity: 1; }
+
+/* ======= TEMA CLARO ======= */
+[data-theme="light"] .page-header h1 { color: #111; }
+[data-theme="light"] .page-header p  { color: #555; }
+
+[data-theme="light"] .progresso-box {
+    background: #fff;
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+[data-theme="light"] .prog-label { color: #888; }
+[data-theme="light"] .prog-valor { color: #e06800; }
+[data-theme="light"] .prog-bar-wrap { background: rgba(0,0,0,0.1); }
+
+[data-theme="light"] .section-card {
+    background: #fff;
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+[data-theme="light"] .section-title { color: #111; }
+[data-theme="light"] .items-restantes { color: #888; }
+
+[data-theme="light"] .checklist-item { border-color: rgba(0,0,0,0.07); }
+[data-theme="light"] .check-box {
+    border-color: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.03);
+}
+[data-theme="light"] .item-nome { color: #111; }
+[data-theme="light"] .item-sub  { color: #888; }
+
+[data-theme="light"] .aviso-card {
+    background: rgba(255,122,0,0.06);
+    border-color: rgba(255,122,0,0.2);
+}
+[data-theme="light"] .aviso-card p { color: #555; }
+
+[data-theme="light"] .dica-item { border-color: rgba(0,0,0,0.06); }
+[data-theme="light"] .dica-titulo { color: #111; }
+[data-theme="light"] .dica-texto p { color: #555; }
+
+[data-theme="light"] .ajuda-box {
+    background: #f5f0ea;
+    border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .ajuda-titulo { color: #111; }
+[data-theme="light"] .ajuda-box p  { color: #555; }
+
+[data-theme="light"] .indice-sub { color: #888; }
+[data-theme="light"] .indice-tag {
+    background: rgba(76,175,80,0.12);
+    color: #2e7d32;
+}

@@ -1,0 +1,203 @@
+/* ========================================================
+   MALAGON — NAVBAR COMPARTILHADA + SISTEMA DE TEMAS
+   ======================================================== */
+
+/* ---------- VARIÁVEIS GLOBAIS DE TEMA ---------- */
+
+:root {
+  /* Fundo e texto */
+  --bg-body:         #0b0b0b;
+  --bg-card:         #1d1d1f;
+  --bg-card-alt:     rgba(255,255,255,0.05);
+  --bg-input:        rgba(255,255,255,0.04);
+  --bg-nav:          rgba(10,10,10,0.88);
+  --bg-nav-border:   rgba(255,122,0,0.12);
+  --bg-cta:          linear-gradient(135deg,#1a1a1a,#101010);
+  --bg-footer:       #0a0a0a;
+
+  --color-text:      #ffffff;
+  --color-muted:     #aaaaaa;
+  --color-muted2:    #777777;
+  --color-border:    rgba(255,255,255,0.06);
+
+  --color-logo:      #ff7a00;
+  --color-link:      #c5c5c5;
+  --color-link-hover:#ffffff;
+  --color-ativo:     #ffffff;
+
+  --shadow-nav:      0 2px 20px rgba(0,0,0,0.4);
+  --shadow-card:     0 4px 24px rgba(0,0,0,0.3);
+
+  /* Toggle */
+  --toggle-bg:       #2a2a2a;
+  --toggle-knob:     #ff7a00;
+}
+
+/* ---------- TEMA CLARO ---------- */
+
+[data-theme="light"] {
+  --bg-body:         #f0ede8;
+  --bg-card:         #f0ede8;
+  --bg-card-alt:     rgba(0,0,0,0.05);
+  --bg-input:        rgba(0,0,0,0.04);
+  --bg-nav:          rgba(255,255,255,0.94);
+  --bg-nav-border:   rgba(255,122,0,0.18);
+  --bg-cta:          linear-gradient(135deg,#ffffff,#f5f0ea);
+  --bg-footer:       #dedad4;
+
+  --color-text:      #111111;
+  --color-muted:     #555555;
+  --color-muted2:    #888888;
+  --color-border:    rgba(0,0,0,0.08);
+
+  --color-logo:      #e06800;
+  --color-link:      #444444;
+  --color-link-hover:#111111;
+  --color-ativo:     #e06800;
+
+  --shadow-nav:      0 2px 16px rgba(0,0,0,0.08);
+  --shadow-card:     0 4px 24px rgba(0,0,0,0.08);
+
+  --toggle-bg:       #ddd9d3;
+  --toggle-knob:     #e06800;
+}
+
+/* ---------- BODY BASE ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--bg-body);
+  color: var(--color-text);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ---------- NAVBAR ---------- */
+
+.nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 60px;
+  z-index: 200;
+  background: var(--bg-nav);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--bg-nav-border);
+  box-shadow: var(--shadow-nav);
+  transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.nav .logo {
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--color-logo);
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav .logo a { color: inherit; text-decoration: none; }
+
+.nav .links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav .links a {
+  color: var(--color-link);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.25s;
+  position: relative;
+}
+
+.nav .links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 2px;
+  background: var(--color-logo);
+  border-radius: 2px;
+  transition: width 0.25s;
+}
+
+.nav .links a:hover { color: var(--color-link-hover); }
+.nav .links a:hover::after { width: 100%; }
+
+.nav .links a.ativo {
+  color: var(--color-ativo);
+  font-weight: 700;
+}
+.nav .links a.ativo::after { width: 100%; }
+
+/* Botão Login */
+.nav .links a.login {
+  background: #ff7a00;
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 7px;
+  font-weight: 600;
+  transition: background 0.25s, transform 0.2s;
+}
+.nav .links a.login::after { display: none; }
+.nav .links a.login:hover { background: #e06800; transform: translateY(-2px); }
+
+/* ---------- TOGGLE DE TEMA ---------- */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 8px;
+}
+
+.theme-toggle .toggle-track {
+  width: 44px; height: 24px;
+  background: var(--toggle-bg);
+  border-radius: 999px;
+  position: relative;
+  transition: background 0.3s;
+  border: 1px solid rgba(128,128,128,0.2);
+  flex-shrink: 0;
+}
+
+.theme-toggle .toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--toggle-knob);
+  transition: transform 0.3s;
+}
+
+[data-theme="light"] .theme-toggle .toggle-track::after {
+  transform: translateX(20px);
+}
+
+.theme-toggle .toggle-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* ---------- ESPAÇADOR ---------- */
+
+.nav-spacer { height: 72px; }
+
+/* ---------- RESPONSIVO ---------- */
+
+@media (max-width: 768px) {
+  .nav { padding: 14px 24px; flex-wrap: wrap; gap: 10px; }
+  .nav .links { gap: 16px; flex-wrap: wrap; }
+  .nav .links a { font-size: 13px; }
+}

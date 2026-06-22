@@ -9,9 +9,10 @@
 
 
 body{
-  background:#0b0b0b;
-  color:white;
+  background: var(--bg-body);
+  color: var(--color-text);
   overflow-x:hidden;
+  transition: background 0.3s, color 0.3s;
 }
 
 /* HERO */
@@ -64,54 +65,7 @@ body{
   z-index:1;
 }
 
-/* NAVBAR */
-
-.nav{
-  position:absolute;
-
-  top:0;
-  left:0;
-
-  width:100%;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  padding:25px 60px;
-
-  z-index:20;
-
-  background:rgba(10,10,10,.35);
-
-  backdrop-filter:blur(12px);
-}
-
-.logo{
-  color:#ff7a00;
-
-  font-size:28px;
-  font-weight:700;
-}
-
-/* LINKS */
-
-.links{
-  display:flex;
-  gap:35px;
-}
-
-.links a{
-  color:#c5c5c5;
-
-  text-decoration:none;
-
-  transition:.3s;
-}
-
-.links a:hover{
-  color:white;
-}
+/* navbar styles moved to shared/navbar.css */
 
 /* HERO CONTENT */
 
@@ -585,3 +539,53 @@ main{
 .footer .status{
   color:#ff7a00;
 }
+
+/* ======= TEMA CLARO ======= */
+[data-theme="light"] .hero-content h1 { color: #fff; } /* hero tem foto, mantém branco */
+[data-theme="light"] .hero-content p  { color: rgba(255,255,255,0.85); }
+
+[data-theme="light"] .info-card {
+    background: rgba(255,255,255,0.96);
+    border-color: rgba(0,0,0,0.08);
+    color: #111;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+[data-theme="light"] .info-card p   { color: #444; }
+[data-theme="light"] .label         { color: #888; }
+[data-theme="light"] .card-top small { color: #999; }
+[data-theme="light"] .status-area p  { color: #888; }
+
+[data-theme="light"] .universidades h2 { color: #111; }
+
+[data-theme="light"] .card {
+    background: #fff;
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+[data-theme="light"] .card p  { color: #555; }
+[data-theme="light"] .card h3 { color: #111; }
+
+[data-theme="light"] .cta {
+    background: linear-gradient(135deg, #fff, #f5f0ea);
+    border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .cta-text h2 { color: #111; }
+[data-theme="light"] .cta-text p  { color: #555; }
+[data-theme="light"] .cta-text button { background: #111; color: #fff; }
+[data-theme="light"] .cta-text button:hover { background: #333; }
+
+[data-theme="light"] .cta-card {
+    background: #f0ede8;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+[data-theme="light"] .card-item p    { color: #555; }
+[data-theme="light"] .card-item span { color: #e06800; }
+[data-theme="light"] .barra          { background: rgba(0,0,0,0.1); }
+[data-theme="light"] .barra div      { background: #e06800; }
+
+[data-theme="light"] .footer { background: #e4e0da; border-color: rgba(0,0,0,0.08); }
+[data-theme="light"] .footer h3   { color: #e06800; }
+[data-theme="light"] .footer p    { color: #666; }
+[data-theme="light"] .footer a    { color: #666; }
+[data-theme="light"] .footer a:hover { color: #111; }
+[data-theme="light"] .footer .status { color: #e06800; }

@@ -3,23 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visto</title>
-    <link rel="stylesheet" href="visto.css">
+    <title>Visto | Malagon</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/navbar.css">
+    <link rel="stylesheet" href="visto.css">
 </head>
 <body>
-    <!-- NAVBAR -->
-    <div class="nav">
-        <div class="logo">Malagon</div>
-        <div class="links">
-            <a href="../home/home.html">Home</a>
-            <a href="../local/local.html">Localização</a>
-            <a href="../financeiro/financeiro.html">Financeiro</a>
-            <a href="../academico/academico.html">Acadêmico</a>
-            <a class="ativo" href="#">Visto</a>
-            <a href="../login/login.html" class="login">Login</a>
-        </div>
-    </div>
 
     <!-- CONTEUDO PRINCIPAL -->
     <div class="page-wrapper">
@@ -42,17 +31,15 @@
         <!-- GRID PRINCIPAL -->
         <div class="main-grid">
 
-            <!-- COLUNA ESQUERDA: checklist + aviso + botao -->
+            <!-- COLUNA ESQUERDA -->
             <div class="col-left">
 
-                <!-- CHECKLIST -->
                 <div class="section-card">
                     <div class="section-title-row">
                         <span class="section-title">Checklist Obrigatório</span>
                         <span class="items-restantes">4 ITENS RESTANTES</span>
                     </div>
 
-                    <!-- Item VALID -->
                     <div class="checklist-item checked">
                         <div class="check-box checked">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -66,7 +53,6 @@
                         <span class="badge valid">VALID</span>
                     </div>
 
-                    <!-- Item PENDING -->
                     <div class="checklist-item">
                         <div class="check-box"></div>
                         <div class="item-info">
@@ -76,7 +62,6 @@
                         <span class="badge pending">PENDING</span>
                     </div>
 
-                    <!-- Item VALID -->
                     <div class="checklist-item checked">
                         <div class="check-box checked">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -90,7 +75,6 @@
                         <span class="badge valid">VALID</span>
                     </div>
 
-                    <!-- Item PENDING -->
                     <div class="checklist-item">
                         <div class="check-box"></div>
                         <div class="item-info">
@@ -101,21 +85,17 @@
                     </div>
                 </div>
 
-                <!-- AVISO -->
                 <div class="aviso-card">
                     <span class="aviso-icon">ℹ️</span>
                     <p>Documentos pendentes podem atrasar sua entrevista em até +15 dias úteis**. Recomendamos o upload imediato.</p>
                 </div>
 
-                <!-- BOTAO -->
                 <button class="btn-simulacao">NEW SIMULATION →</button>
-
             </div>
 
-            <!-- COLUNA DIREITA: dicas + indice -->
+            <!-- COLUNA DIREITA -->
             <div class="col-right">
 
-                <!-- DICAS -->
                 <div class="section-card dicas-card">
                     <span class="section-title">Dicas de Especialista</span>
 
@@ -135,7 +115,6 @@
                         </div>
                     </div>
 
-                    <!-- Precisa de ajuda -->
                     <div class="ajuda-box">
                         <span class="ajuda-titulo">Precisa de ajuda?</span>
                         <p>Nossos consultores especializados em vistos estão disponíveis para revisão manual.</p>
@@ -143,7 +122,6 @@
                     </div>
                 </div>
 
-                <!-- INDICE DE APROVACAO -->
                 <div class="section-card indice-card">
                     <div class="indice-header">
                         <span class="section-title">Índice de Aprovação</span>
@@ -164,5 +142,7 @@
             </div>
         </div>
     </div>
+
+    <script src="../shared/navbar.js"></script>
 </body>
 </html>

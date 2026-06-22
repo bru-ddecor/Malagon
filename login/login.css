@@ -220,3 +220,51 @@ form {
 .btn-voltar:hover {
     background: #444;
 }
+
+/* ======= TEMA CLARO ======= */
+
+/* Fundo da página mantém a imagem */
+[data-theme="light"] body {
+    background-image: url('../img/fundo.jpg');
+}
+
+/* Container: fundo claro mas sem quebrar o layout */
+[data-theme="light"] .container {
+    background: #f0ede8;
+    box-shadow: 0 0 40px rgba(0,0,0,0.25);
+}
+
+/* Formulário */
+[data-theme="light"] .form-box {
+    background: #f0ede8;
+    color: #333;
+}
+
+[data-theme="light"] .container h1 { color: #111; }
+[data-theme="light"] .form-box p   { color: #555; }
+
+[data-theme="light"] .caixa input {
+    background: #e4e0da;
+    color: #111;
+}
+[data-theme="light"] .caixa input::placeholder { color: #999; }
+[data-theme="light"] .caixa i { color: #777; }
+
+[data-theme="light"] .esquecer a { color: #555; }
+[data-theme="light"] .social a {
+    color: #444;
+    border-color: #ccc;
+}
+
+/* Painel laranja (toggle) — mantém laranja nos dois temas */
+[data-theme="light"] .toggle-painel p { color: #fff; }
+
+/* Botão voltar */
+[data-theme="light"] .btn-voltar {
+    background: rgba(255,255,255,0.85);
+    color: #222;
+    backdrop-filter: blur(10px);
+}
+[data-theme="light"] .btn-voltar:hover {
+    background: rgba(255,255,255,1);
+}
