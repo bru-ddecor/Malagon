@@ -71,9 +71,10 @@ body{
 
 .hero-content{
   position:relative;
-  z-index:10;
-
+  z-index:10;  
+  
   max-width:650px;
+  margin-bottom:350px;
 }
 
 .hero-content h1{
