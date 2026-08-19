@@ -1,7 +1,8 @@
 import express from "express";
 import {
     listarUniversidades,
-    buscarUniversidade
+    buscarUniversidade,
+    criarUniversidade
 } from "../controllers/universidadeController.js";
 
 const router = express.Router();
@@ -9,6 +10,8 @@ const router = express.Router();
 router.get("/", listarUniversidades);
 
 router.get("/:id", buscarUniversidade);
+
+router.post("/", criarUniversidade);
 
 export default router;
 
