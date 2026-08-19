@@ -21,7 +21,7 @@
   "homepage": "https://github.com/bru-ddecor/Malagon#readme",
   "dependencies": {
     "express": "^5.2.1",
-    "sequelize": "^3.30.0",
-    "sqlite": "^5.1.1"
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7"
   }
 }

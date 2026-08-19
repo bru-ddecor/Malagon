@@ -24,7 +24,13 @@ export async function buscarUniversidade(req, res) {
 }
 
 export async function criarUniversidade(req, res) {
-    const { nome, cidade, site } = req.body;
+    const { nome, cidade, site } = req.body ?? {};
+
+    if (!nome) {
+        return res.status(400).json({
+            mensagem: "O campo nome é obrigatório"
+        });
+    }
 
     const universidade = await Universidade.create({ nome, cidade, site });
 
