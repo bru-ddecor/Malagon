@@ -1,68 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acadêmico | Malagon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../shared/navbar.css">
     <link rel="stylesheet" href="academico.css">
 </head>
-<body>
 
+<body>
+    <!-- Página wrapper -->
     <div class="page-wrapper">
 
-        <h1>Avaliação de Nível</h1>
-        <p class="intro">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat labore at modi, magnam quae molestias repudiandae error perspiciatis ea tempore, ab ipsum autem ipsa recusandae reiciendis atque voluptatem! Doloribus, hic?</p>
+        <h1>Universidades para o seu intercâmbio</h1>
+        <p class="intro">Encontre as melhores universidades de acordo com o país do seu intercâmbio</p>
 
-        <section class="estudos">
-            <div class="card">
-                <h3>Frontend</h3>
-                <p>ejmfkerçr</p>
-                <button>Ver módulo</button>
+        <div class="filtro">
+            <!-- Título do Card -->
+            <div class="filtro-titulo">
+                <h3>Filtros</h3>
             </div>
-            <div class="card">
-                <h3>Backend</h3>
-                <p>ejmfkerçr</p>
-                <div class="line green"></div>
-                <button>Iniciar teste</button>
-            </div>
-            <div class="card">
-                <h3>Data Science</h3>
-                <p>ejmfkerçr</p>
-                <div class="line gray"></div>
-                <button>Continuar</button>
-            </div>
-            <div class="card">
-                <h3>DevOps</h3>
-                <p>ejmfkerçr</p>
-                <button>Locked</button>
-            </div>
-        </section>
 
-        <section>
-            <h2>Avaliações recentes</h2>
-            <div class="avanco">
-                <h3>Lógica de programação</h3>
-                <p>88/100</p>
-            </div>
-            <div class="avanco">
-                <h3>Cabeamento e infraestrutura</h3>
-                <p>92/100</p>
-            </div>
-        </section>
+            <div class="campo-filtro">
+                <label for="pais">País de Destino</label>
 
-        <section class="evolucao">
-            <h2>Evolução</h2>
-            <h3>Desenvolvimento de habilidades</h3>
-            <p>Sua capacidade de "Frontend" aumentou 14% neste mês. Focar nos 14 componentes do servidor Next.js pode desbloquear o Nível 2 Sênior.</p>
-            <h3>Area em Foco</h3>
-            <p>Com base na sua pontuação recente de 'DevOps', recomendamos o módulo de Rede Kubernetes para sua próxima sessão.</p>
-            <button>Roteiro Personalizado</button>
-        </section>
+                <select id="pais">
+                    <option value="">Carregando países...</option>
+                </select>
+            </div>
+
+            <!-- Área de interesse -->
+            <div class="campo-filtro">
+                <label for="area">Área de interesse</label>
+
+                <select id="area">
+                    <option value="">Selecione uma área</option>
+                    <option value="ti">Tecnologia da Informação</option>
+                    <option value="engenharia">Engenharia</option>
+                    <option value="dados">Ciência de Dados</option>
+                    <option value="software">Desenvolvimento de Software</option>
+                </select>
+            </div>
+
+            <!-- Nível de estudo -->
+            <div class="campo-filtro">
+                <label for="nivel">Nível de estudo</label>
+
+                <select id="nivel">
+                    <option value="">Selecione o nível</option>
+                    <option value="graduacao">Graduação</option>
+                    <option value="pos">Pós-graduação</option>
+                    <option value="mestrado">Mestrado</option>
+                    <option value="doutorado">Doutorado</option>
+                </select>
+            </div>
+
+            <div class="campo-filtro">
+                <label for="idioma">Idioma do curso</label>
+                <select id="idioma">
+                    <option value="">Selecione o Idioma</option>
+                    <option value="ingles">Inglês</option>
+                    <option value="espanhol">Espanhol</option>
+                    <option value="frances">Francês</option>
+                    <option value="alemao">Alemão</option>
+                    <option value="portugues">Português</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+
+            <!-- Botão para aplicar o filtro -->
+            <button class="btn-aplicar" id="btnAplicar">Aplicar Filtros</button>
+            <!-- Botão limpar -->
+            <button class="btn-limpar" id="btnLimpar">Limpar filtros</button>
+        </div>
 
     </div>
 
     <script src="../shared/navbar.js"></script>
+    <script src="academico.js"></script>
 </body>
+
 </html>
