@@ -1,109 +1,121 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../shared/navbar.css">
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malagon - Portal do Estudante</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
-    <div class="container">
-     <button onclick="window.location.href='../home/home.html'" class="btn-voltar">
-    <i class="fa-solid fa-arrow-left"></i> Home
-</button>
-        <!-- Login -->
-        <div class=" form-box login">
-            <form action="#">
-                <h1>Login</h1>
 
-                <div class="caixa">
-                    <input type="text" placeholder="Usuário" required>
-                    <i class="fa-solid fa-user"></i>
-                </div>
+  <div class="login-bg"></div>
+  <div class="overlay"></div>
 
-                <div class="caixa">
-                    <input type="password" placeholder="Senha" required>
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-
-                <div class="esquecer">
-                    <a href="#">Esqueceu a Senha</a>
-                </div>
-
-                <button type="submit" class="btn">Login</button>
-                <p>Ou entre com suas redes sociais</p>
-
-                <div class="social">
-                    <a href="#"><i class="fa-brands fa-google"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-
-            </form>
-        </div>
-
-        <!-- Registro -->
-        <div class="form-box registro">
-                <form action="#">
-                    <h1>Cadastro</h1>
-
-                    <div class="caixa">
-                        <input type="text" placeholder="Usuário" required>
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-
-                    <div class="caixa">
-                        <input type="email" placeholder="Email" required>
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-
-                    <div class="caixa">
-                        <input type="password" placeholder="Senha" required>
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-
-                    <button type="submit" class="btn">Cadastro</button>
-                    <p>Ou cadastre-se com suas redes sociais</p>
-                    <div class="social">
-                        <a href="#"><i class="fa-brands fa-google"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                </form>
-            
-        </div>
-
-        <!-- Toggle Box -->
-        <div class="toggle-box">
-            <!-- Toggle Box Left -->
-            <div class="toggle-painel toggle-left">
-                <h1>Olá, Bem-vindo!</h1>
-                <p>Ainda não possui uma conta?</p>
-                <button class="btn btn-cadastro">Cadastrar</button>
-            </div>
-        </div>
-
-        <!-- Toggle Box -->
-
-        <!-- Toggle Box Left -->
-        <div class="toggle-painel toggle-right">
-            <h1>Bem-vindo de volta!</h1>
-            <p>Já tem uma conta?</p>
-            <button class="btn btn-login">Login</button>
-        </div>
-
-
-
+  <div class="container">
+    <!-- CABEÇALHO MAC OS NO CARD -->
+    <div class="card-header">
+      <span class="btn-fechar"></span>
+      <span class="btn-minimizar"></span>
+      <span class="btn-expandir"></span>
+      <span class="titulo-janela">Portal do Estudante | Malagon</span>
     </div>
 
-    <script src="../shared/navbar.js"></script>
-</body>
-<script src="login.js"></script>
+    <!-- FORMULÁRIO DE LOGIN -->
+    <div class="form-box login">
+      <form id="form-login" action="#">
+        <div class="form-title">
+          <h2>Acesse sua Conta</h2>
+          <p>Entre para acompanhar simulações e vistos salvos.</p>
+        </div>
 
+        <div class="input-box">
+          <label>E-mail Acadêmico ou Pessoal</label>
+          <input type="email" placeholder="seuemail@exemplo.com" required>
+        </div>
+
+        <div class="input-box">
+          <div class="label-row">
+            <label>Senha</label>
+            <a href="#" class="esqueci-link">Esqueceu a senha?</a>
+          </div>
+          <input type="password" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Entrar na Plataforma →</button>
+
+        <div class="divisor">
+          <span>ou entre com</span>
+        </div>
+
+        <div class="social-login">
+          <button type="button" class="btn-social">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google
+          </button>
+          <button type="button" class="btn-social">
+            <img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="GitHub"> GitHub
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <div class="form-box cadastro">
+      <form id="form-cadastro" action="#">
+        <div class="form-title">
+          <h2>Criar Conta Global</h2>
+          <p>Comece a planejar seu intercâmbio gratuitamente.</p>
+        </div>
+
+        <div class="input-box">
+          <label>Nome Completo</label>
+          <input type="text" placeholder="Seu nome" required>
+        </div>
+
+        <div class="input-box">
+          <label>E-mail</label>
+          <input type="email" placeholder="seuemail@exemplo.com" required>
+        </div>
+
+        <div class="input-box">
+          <label>Perfil Acadêmico</label>
+          <select required class="select-perfil">
+            <option value="" disabled selected>Selecione seu objetivo...</option>
+            <option value="graduacao">Graduação no Exterior</option>
+            <option value="pos">Pós / Mestrado / Doutorado</option>
+            <option value="idioma">Curso de Idiomas</option>
+            <option value="pesquisa">Pesquisa / Estágio Tech</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <label>Senha</label>
+          <input type="password" placeholder="Crie uma senha forte" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Criar Minha Conta →</button>
+      </form>
+    </div>
+
+    <!-- PAINEL DESLIZANTE DE TRANSIÇÃO -->
+    <div class="toggle-box">
+      <div class="toggle-panel toggle-left">
+        <span class="badge-feature">Inteligência Acadêmica</span>
+        <h3>Primeira vez no Malagon?</h3>
+        <p>Crie sua conta para acessar recomendações por IA, comparador de custos globais e checklist completo de visto.</p>
+        <button class="btn btn-outline btn-cadastro">Cadastrar-se Agora</button>
+      </div>
+
+      <div class="toggle-panel toggle-right">
+        <span class="badge-feature">Plataforma Internacional</span>
+        <h3>Já planeja conosco?</h3>
+        <p>Acesse seu painel para continuar sua aplicação e gerenciar seu orçamento de intercâmbio.</p>
+        <button class="btn btn-outline btn-login">Voltar ao Login</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
 </html>

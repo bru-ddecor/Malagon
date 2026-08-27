@@ -1,26 +1,29 @@
-// Configuração do Sequelize (ORM) para o banco de dados do Malagon.
-//
-// Estamos usando SQLite como banco: não precisa instalar nem configurar
-// nenhum servidor de banco de dados separado, o Sequelize cria o arquivo
-// "malagon.sqlite" automaticamente na primeira execução. Isso facilita
-// para desenvolvimento e para apresentação/demonstração.
-//
-// Se no futuro quiser trocar para MySQL/Postgres (ex: em produção), basta
-// mudar o "dialect" e passar host/usuário/senha nas options abaixo —
-// o resto do código (models, controllers) não muda nada, essa é uma das
-// grandes vantagens de usar um ORM.
+// Com sequelize
+// import {sequelize} from "sequelize";
 
-import { Sequelize } from "sequelize";
-import path from "path";
-import { fileURLToPath } from "url";
+// const sequelize = new Sequelize(
+//     process.env.DB_NAME,
+//     process.env.DB_USER,
+//     process.env.DB_PASSWORD,
+//     {
+//         host: process.env.DB_HOST,
+//         dialect: "mysql",
+//     }
+// );  
+    
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// export default sequelize;
 
-const sequelize = new Sequelize({
-    dialect: "sqlite",
-    storage: path.join(__dirname, "../../malagon.sqlite"),
-    logging: false, // true mostra no console o SQL que o Sequelize gera
+// Sem sequelize ============================
+
+import mysql from "mysql2/promise";
+
+const db = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "malagon"
 });
 
-export default sequelize;
+export default db;
 

@@ -1,24 +1,37 @@
-// Model do Sequelize (ORM): descreve a tabela "Universidades" do banco.
-// Cada propriedade abaixo vira uma coluna na tabela. A partir daqui,
-// o Sequelize cuida de gerar o SQL (CREATE TABLE, SELECT, INSERT, etc)
-// automaticamente — não escrevemos mais SQL manualmente.
+// Com sequelize
 
-import { DataTypes } from "sequelize";
-import sequelize from "../config/database.js";
+// import { DataTypes } from "sequelize";
+// import sequelize from "../config/database.js";
 
-const Universidade = sequelize.define("Universidade", {
-    nome: {
-        type: DataTypes.STRING,
-        allowNull: false
+// const Universidade = sequelize.define("Universidade", {
+//     nome: {
+//         type: DataTypes.STRING
+//     },
+
+//     cidade: {
+//         type: DataTypes.STRING
+//     },
+
+//     site: {
+//         type: DataTypes.STRING
+//     }
+// });
+
+// export default Universidade;
+
+//Vamos configurar Sequelize depois, por enquanto vamos usar o mysql2/promise ============================
+
+const universidades = [
+    {
+        id: 1,
+        nome: "Universidade de Málaga",
+        cidade: "Málaga"
     },
-
-    cidade: {
-        type: DataTypes.STRING
-    },
-
-    site: {
-        type: DataTypes.STRING
+    {
+        id: 2,
+        nome: "Universidade Exemplo",
+        cidade: "Málaga"
     }
-});
+];
 
-export default Universidade;
+export default universidades;

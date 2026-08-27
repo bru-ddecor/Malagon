@@ -212,77 +212,9 @@ function atualizarMapa() {
 // =========================
 // BOTÃO CONFIRMAR
 // =========================
-document.querySelector(".confirmar").addEventListener("click", () => {
-    atualizarMapa();
-    buscarUniversidadesExternas();
-});
+document.querySelector(".confirmar").addEventListener("click", atualizarMapa);
 
 // =========================
 // INICIAR
 // =========================
 window.onload = atualizarMapa;
-
-
-
-
-//========================= 
-//UNIVERSIDADES CONTAINER
-//=========================
-
-async function buscarUniversidadesExternas() {
-  const container = document.getElementById('container-universidades');
-  const lista = document.getElementById('lista-universidades');
-
-    const partes = destinoInput.value.split(',');
-    const nomePais = partes[partes.length - 1].trim().toLowerCase();
-
-    const traducaoPaises = {
-        'espanha': 'Spain',
-        'frança': 'France',
-        'alemanha': 'Germany',
-        'itália': 'Italy',
-        'reino unido': 'United Kingdom'
-    };
-
-    const pais = traducaoPaises[nomePais] || nomePais;
-  
-  // Limpa a lista anterior e mostra o container
-  lista.innerHTML = '<li>Carregando universidades...</li>';
-  container.style.display = 'block';
-
-  try {
-        const resposta = await fetch(
-            `http://universities.hipolabs.com/search?country=${encodeURIComponent(pais)}`
-        );
-        if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
-        const dados = await resposta.json();
-
-    // Palavras-chave para filtrar faculdades de tecnologia (em inglês e português)
-    const termosTecnologia = ['technology', 'tech', 'polytechnic', 'politécnico', 'politécnica', 'engenharia', 'engineering', 'instituto', 'institute', 'computer science', 'software engineering', 'information systems', 'cybersecurity'];
-
-
-    const faculdadesTecnologia = dados.filter(uni => {
-      const nomeMinusculo = uni.name.toLowerCase();
-      return termosTecnologia.some(termo => nomeMinusculo.includes(termo));
-    });
-
-    // Limpa o texto de "Carregando"
-    lista.innerHTML = '';
-
-    if (faculdadesTecnologia.length === 0) {
-      lista.innerHTML = '<li>Nenhuma universidade de tecnologia encontrada para este país.</li>';
-      return;
-    }
-
-    // Renderiza as top 5 universidades filtradas na tela com links clicáveis
-    faculdadesTecnologia.slice(0, 5).forEach(uni => {
-      const item = document.createElement('li');
-      item.innerHTML = `<strong>${uni.name}</strong> - <a href="${uni.web_pages[0]}" target="_blank">Visitar site</a>`;
-      lista.appendChild(item);
-    });
-
-  } catch (erro) {
-    console.error('Erro ao buscar universidades:', erro);
-    lista.innerHTML = '<li>Erro ao carregar as universidades. Tente novamente.</li>';
-  }
-}

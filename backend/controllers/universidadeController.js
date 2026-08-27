@@ -1,18 +1,15 @@
-import Universidade from "../models/universidadeModel.js";
+import universidades from "../models/universidadeModel.js";
 
-// Antes (array mock):      universidades.find(u => u.id === id)
-// Agora (Sequelize/ORM):   Universidade.findByPk(id)
-// O Sequelize traduz essas chamadas para SQL de verdade por baixo dos panos.
-
-export async function listarUniversidades(req, res) {
-    const universidades = await Universidade.findAll();
+export function listarUniversidades(req, res) {
     res.json(universidades);
 }
 
-export async function buscarUniversidade(req, res) {
+export function buscarUniversidade(req, res) {
     const id = Number(req.params.id);
 
-    const universidade = await Universidade.findByPk(id);
+    const universidade = universidades.find(
+        universidade => universidade.id === id
+    );
 
     if (!universidade) {
         return res.status(404).json({
@@ -23,22 +20,4 @@ export async function buscarUniversidade(req, res) {
     res.json(universidade);
 }
 
-export async function criarUniversidade(req, res) {
-    const { nome, cidade, site } = req.body ?? {};
-
-    if (!nome) {
-        return res.status(400).json({
-            mensagem: "O campo nome é obrigatório"
-        });
-    }
-
-    const universidade = await Universidade.create({ nome, cidade, site });
-
-    res.status(201).json(universidade);
-}
-
-// O Controller recebe a solicitação encaminhada pela rota e determina o que deve acontecer.
-// listarUniversidades  -> lista todas (GET /universidades)
-// buscarUniversidade   -> busca uma pelo ID (GET /universidades/:id)
-// criarUniversidade    -> cria uma nova (POST /universidades) — adicionado para
-//                         demonstrar como o Sequelize simplifica o INSERT
+// O Controller recebe a solicitação encaminhada pela rota e determina o que deve acontecer. Aqui temos uma função para listar todas as universidades e outra para procurar uma universidade pelo ID.
