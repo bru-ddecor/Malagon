@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malagon - Portal do Estudante</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+  <div class="login-bg"></div>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <!-- CABEÇALHO MAC OS NO CARD -->
+    <div class="card-header">
+      <span class="btn-fechar"></span>
+      <span class="btn-minimizar"></span>
+      <span class="btn-expandir"></span>
+      <span class="titulo-janela">Portal do Estudante | Malagon</span>
+    </div>
+
+    <!-- FORMULÁRIO DE LOGIN -->
+    <div class="form-box login">
+      <form id="form-login" action="#">
+        <div class="form-title">
+          <h2>Acesse sua Conta</h2>
+          <p>Entre para acompanhar simulações e vistos salvos.</p>
+        </div>
+
+        <div class="input-box">
+          <label>E-mail Acadêmico ou Pessoal</label>
+          <input type="email" placeholder="seuemail@exemplo.com" required>
+        </div>
+
+        <div class="input-box">
+          <div class="label-row">
+            <label>Senha</label>
+            <a href="#" class="esqueci-link">Esqueceu a senha?</a>
+          </div>
+          <input type="password" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Entrar na Plataforma →</button>
+
+        <div class="divisor">
+          <span>ou entre com</span>
+        </div>
+
+        <div class="social-login">
+          <button type="button" class="btn-social">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google
+          </button>
+          <button type="button" class="btn-social">
+            <img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="GitHub"> GitHub
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <div class="form-box cadastro">
+      <form id="form-cadastro" action="#">
+        <div class="form-title">
+          <h2>Criar Conta Global</h2>
+          <p>Comece a planejar seu intercâmbio gratuitamente.</p>
+        </div>
+
+        <div class="input-box">
+          <label>Nome Completo</label>
+          <input type="text" placeholder="Seu nome" required>
+        </div>
+
+        <div class="input-box">
+          <label>E-mail</label>
+          <input type="email" placeholder="seuemail@exemplo.com" required>
+        </div>
+
+        <div class="input-box">
+          <label>Perfil Acadêmico</label>
+          <select required class="select-perfil">
+            <option value="" disabled selected>Selecione seu objetivo...</option>
+            <option value="graduacao">Graduação no Exterior</option>
+            <option value="pos">Pós / Mestrado / Doutorado</option>
+            <option value="idioma">Curso de Idiomas</option>
+            <option value="pesquisa">Pesquisa / Estágio Tech</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <label>Senha</label>
+          <input type="password" placeholder="Crie uma senha forte" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Criar Minha Conta →</button>
+      </form>
+    </div>
+
+    <!-- PAINEL DESLIZANTE DE TRANSIÇÃO -->
+    <div class="toggle-box">
+      <div class="toggle-panel toggle-left">
+        <span class="badge-feature">Inteligência Acadêmica</span>
+        <h3>Primeira vez no Malagon?</h3>
+        <p>Crie sua conta para acessar recomendações por IA, comparador de custos globais e checklist completo de visto.</p>
+        <button class="btn btn-outline btn-cadastro">Cadastrar-se Agora</button>
+      </div>
+
+      <div class="toggle-panel toggle-right">
+        <span class="badge-feature">Plataforma Internacional</span>
+        <h3>Já planeja conosco?</h3>
+        <p>Acesse seu painel para continuar sua aplicação e gerenciar seu orçamento de intercâmbio.</p>
+        <button class="btn btn-outline btn-login">Voltar ao Login</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malagon - Intercâmbio Global</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/navbar.css" />
+    <link rel="stylesheet" href="home.css" />
+  </head>
+
+  <body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="bg ativo" style="background-image: url('../img/fundo.jpg')"></div>
+      <div class="bg" style="background-image: url('../img/fundo2.jpg')"></div>
+      <div class="bg" style="background-image: url('../img/fundo3.jpg')"></div>
+      <div class="overlay"></div>
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <span class="tag-badge">IA + Intercâmbio</span>
+          <h1>Planeje seu <span>Intercâmbio</span> com Inteligência</h1>
+          <p>Simule custos, organize vistos e encontre sua rota acadêmica em qualquer lugar do mundo com total segurança e precisão.</p>
+          
+          <div class="botoes">
+            <a href="../login/login.html" class="btn-primary">Começar Simulação</a>
+            <button class="btn-secondary" id="btnVerMais">Saiba Mais ↓</button>
+          </div>
+        </div>
+
+        <!-- DASHBOARD WIDGETS -->
+        <div class="hero-dashboard">
+          <div class="dash-card">
+            <div class="card-topo">
+              <span class="icone orange">📊</span>
+              <small>MONTHLY AVG</small>
+            </div>
+            <div class="valor-stat">€ 850,00</div>
+            <p class="desc-stat">Média estimada para o seu destino.</p>
+            <div class="line orange"></div>
+          </div>
+
+          <div class="dash-card">
+            <div class="card-topo">
+              <span class="icone purple">🎯</span>
+              <small>TARGET</small>
+            </div>
+            <div class="valor-stat">€ 3.500,00</div>
+            <p class="desc-stat">Reserva para visto acadêmico.</p>
+            <div class="line purple"></div>
+          </div>
+
+          <div class="dash-card">
+            <div class="card-topo">
+              <span class="icone green">🚀</span>
+              <small>MATCHING IA</small>
+            </div>
+            <div class="valor-stat">95.8%</div>
+            <div class="status-area">
+              <span class="status">Alta Compatibilidade</span>
+            </div>
+            <div class="line green"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTINOS E UNIVERSIDADES GLOBAIS -->
+    <section class="universidades">
+      <div class="section-header">
+        <h2>Destinos e Universidades Globais</h2>
+        <p>Instituições reconhecidas e polos de inovação para estudantes de tecnologia no mundo todo.</p>
+      </div>
+
+      <div class="cards" id="container-universidades">
+        <!-- RENDERIZADO DINAMICAMENTE PELO HOME.JS -->
+      </div>
+    </section>
+
+    <!-- CALCULADORA INTERATIVA -->
+    <section class="cta">
+      <div class="cta-text">
+        <h2>Simulador de Custos em Tempo Real</h2>
+        <p>Mova os seletores para simular seu orçamento mensal e planejar sua rotina no exterior.</p>
+        <button onclick="window.location.href='../login/login.html'">Inscreva-se Gratuitamente →</button>
+      </div>
+
+      <div class="cta-card">
+        <div class="card-header">
+          <span class="btn-fechar"></span>
+          <span class="btn-minimizar"></span>
+          <span class="btn-expandir"></span>
+          <span class="titulo-janela">Calculadora Interativa</span>
+        </div>
+
+        <div class="calculator-preview">
+          <div class="calc-total">
+            <small>Estimativa Total</small>
+            <div class="amount" id="total-estimado">~ € 1.105,00 / mês</div>
+          </div>
+
+          <div class="calc-item">
+            <div class="item-topo">
+              <p>Aluguel</p>
+              <span id="valor-aluguel">€ 650</span>
+            </div>
+            <input type="range" id="range-aluguel" min="300" max="1500" value="650" class="slider-cost">
+          </div>
+
+          <div class="calc-item">
+            <div class="item-topo">
+              <p>Alimentação</p>
+              <span id="valor-alimentacao">€ 310</span>
+            </div>
+            <input type="range" id="range-alimentacao" min="150" max="800" value="310" class="slider-cost">
+          </div>
+
+          <div class="calc-item">
+            <div class="item-topo">
+              <p>Transporte</p>
+              <span id="valor-transporte">€ 35</span>
+            </div>
+            <input type="range" id="range-transporte" min="10" max="200" value="35" class="slider-cost">
+          </div>
+
+          <div class="calc-item">
+            <div class="item-topo">
+              <p>Lazer</p>
+              <span id="valor-lazer">€ 110</span>
+            </div>
+            <input type="range" id="range-lazer" min="50" max="600" value="110" class="slider-cost">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="depoimentos">
+      <div class="section-header">
+        <h2>Quem usou o Malagon</h2>
+        <p>Depoimentos de estudantes que planejaram a jornada internacional com nossa plataforma.</p>
+      </div>
+
+      <div class="depoimentos-grid">
+        <div class="depoimento-card">
+          <p>"A simulação de custos me ajudou a juntar a quantia exata para o visto de estudos sem surpresas."</p>
+          <div class="user-info">
+            <strong>Lucas Mendes</strong>
+            <small>Engenharia de Software (Espanha)</small>
+          </div>
+        </div>
+
+        <div class="depoimento-card">
+          <p>"O algoritmo de rota acadêmica me conectou com um programa incrível na Suíça."</p>
+          <div class="user-info">
+            <strong>Beatriz Rocha</strong>
+            <small>Ciência de Dados (Suíça)</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="section-header">
+        <h2>Perguntas Frequentes</h2>
+        <p>Tire suas dúvidas sobre o processo de intercâmbio internacional.</p>
+      </div>
+
+      <div class="faq-container">
+        <details class="faq-item">
+          <summary>Preciso falar o idioma local fluente para fazer intercâmbio?</summary>
+          <p>Depende do país e do programa. Várias universidades pelo mundo oferecem graduações e pós-graduações totalmente em inglês, exigindo apenas proficiência (IELTS/TOEFL).</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Como funciona a comprovação financeira do visto?</summary>
+          <p>Cada país possui um índice mínimo exigido por mês de permanência. Nossa plataforma calcula automaticamente o valor exato necessário para o destino escolhido.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Estudantes internacionais podem trabalhar no exterior?</summary>
+          <p>A maioria dos países (como Espanha, Alemanha, Canadá e Austrália) permite que estudantes trabalhem a tempo parcial (geralmente até 20 ou 30 horas semanais).</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="left">
+          <h3>Malagon</h3>
+          <p>© 2026 Malagon Platform. Todos os direitos reservados.</p>
+        </div>
+        <div class="right">
+          <a href="#">Privacidade</a>
+          <a href="#">Termos</a>
+          <a href="#">API Docs</a>
+          <a href="#" class="status">System Status: Online</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../shared/navbar.js"></script>
+    <script src="home.js"></script>
+  </body>
+</html>
