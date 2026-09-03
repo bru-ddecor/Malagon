@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Referências do formulário
     const inputBusca = document.getElementById('inputBusca');
     const selectPais = document.getElementById('pais');
     const selectArea = document.getElementById('area');
@@ -47,7 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const fallbackCampusImg = "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80";
     const fallbackLogoImg = "https://cdn-icons-png.flaticon.com/512/807/807409.png";
 
+    // 1. Conexão com a Shared Navbar (Marcação do link ativo)
+    function integrarSharedNavbar() {
+        // Se a navbar injetar elementos dinamicamente, ajusta a classe ativa
+        const navLinks = document.querySelectorAll('.navbar a, nav a');
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') && link.getAttribute('href').includes('academico')) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // 2. Preenchimento de países
     function popularSelectPaises() {
+        if (!selectPais) return;
         selectPais.innerHTML = '<option value="">Selecione um país</option>';
         selectPais.innerHTML += '<option value="ALL">Todos os países</option>';
 
@@ -59,30 +73,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    async function buscarImagemWikipedia(nomeUniversidade) {
+    // 3. Consulta à Wikipedia para dados reais
+    async function buscarDadosWikipedia(nomeUniversidade) {
         try {
             const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(nomeUniversidade)}`;
             const response = await fetch(url);
-            if (!response.ok) return null;
+            if (!response.ok) return { img: null, desc: null };
             const data = await response.json();
-            return data.thumbnail ? data.thumbnail.source : null;
+            return {
+                img: data.thumbnail ? data.thumbnail.source : null,
+                desc: data.extract ? data.extract : null
+            };
         } catch {
-            return null;
+            return { img: null, desc: null };
         }
     }
 
+    // 4. Lógica de busca principal
     async function buscarUniversidades() {
         const termoTexto = inputBusca ? inputBusca.value.trim().toLowerCase() : "";
-        const paisIngles = selectPais.value;
-        const areaSelecionada = selectArea.value;
+        const paisIngles = selectPais ? selectPais.value : "";
+        const areaSelecionada = selectArea ? selectArea.value : "";
 
         if (!paisIngles && !termoTexto) {
-            listaUniversidades.innerHTML = `<p style="color: #8c90ad;">Digite o nome de uma universidade ou selecione um país para buscar.</p>`;
+            listaUniversidades.innerHTML = `<p style="color: var(--color-muted);">Digite o nome de uma universidade ou selecione um país para buscar.</p>`;
             totalUniversidades.textContent = "0 universidades encontradas";
             return;
         }
 
-        listaUniversidades.innerHTML = `<p style="color: #8c90ad;">Buscando universidades...</p>`;
+        listaUniversidades.innerHTML = `<p style="color: var(--color-muted);">Buscando universidades...</p>`;
 
         try {
             const url = 'https://cdn.jsdelivr.net/gh/Hipo/university-domains-list@master/world_universities_and_domains.json';
@@ -90,20 +109,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error("Erro ao carregar dados da API");
 
             const todasUniversidades = await response.json();
-
             let resultados = todasUniversidades;
 
-            // 1. Filtro por Texto (Nome)
             if (termoTexto) {
                 resultados = resultados.filter(u => u.name.toLowerCase().includes(termoTexto));
             }
 
-            // 2. Filtro por País
             if (paisIngles && paisIngles !== "ALL") {
                 resultados = resultados.filter(u => u.country.toLowerCase() === paisIngles.toLowerCase());
             }
 
-            // 3. Filtro por Área
             if (areaSelecionada && palavrasChaveArea[areaSelecionada]) {
                 const termos = palavrasChaveArea[areaSelecionada];
                 resultados = resultados.filter(uni => {
@@ -114,8 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             totalUniversidades.textContent = `${resultados.length} universidades encontradas`;
-
-            // Exibe todos os resultados encontrados
             renderizarCards(resultados);
 
         } catch (erro) {
@@ -124,20 +137,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // 5. Renderização dos Cards
     async function renderizarCards(lista) {
         if (lista.length === 0) {
-            listaUniversidades.innerHTML = `<p style="color: #8c90ad;">Nenhuma universidade encontrada para os filtros selecionados.</p>`;
+            listaUniversidades.innerHTML = `<p style="color: var(--color-muted);">Nenhuma universidade encontrada para os filtros selecionados.</p>`;
             return;
         }
 
-        // Carrega foto da Wikipedia nos primeiros 30 itens e usa fallback nos demais para alta performance
         const cardsHTML = await Promise.all(lista.map(async (uni, index) => {
             const domain = uni.domains && uni.domains[0] ? uni.domains[0].replace(/^www\./, "") : "";
             const logoUrl = domain ? `https://logo.clearbit.com/${domain}` : fallbackLogoImg;
             const siteUrl = uni.web_pages && uni.web_pages[0] ? uni.web_pages[0] : '#';
             const estado = uni['state-province'] ? `${uni['state-province']}, ` : '';
 
-            const imgCampus = (index < 30) ? ((await buscarImagemWikipedia(uni.name)) || fallbackCampusImg) : fallbackCampusImg;
+            let imgCampus = fallbackCampusImg;
+            let descricaoReal = `Instituição de ensino superior localizada em ${uni.country}. Acesse o site oficial para informações sobre cursos e ingressos.`;
+
+            if (index < 20) {
+                const wikiData = await buscarDadosWikipedia(uni.name);
+                if (wikiData.img) imgCampus = wikiData.img;
+                if (wikiData.desc) descricaoReal = wikiData.desc;
+            }
 
             return `
                 <div class="card-universidade">
@@ -151,14 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="card-info">
                         <h4 class="uni-nome">${uni.name}</h4>
                         <p class="uni-local">📍 ${estado}${uni.country}</p>
-                        <p class="uni-descricao">Uma das principais instituições de ensino. Destaque em inovação e excelência acadêmica.</p>
+                        <p class="uni-descricao">${descricaoReal}</p>
                     </div>
 
                     <div class="card-acoes">
-                        <div class="ranking-info">
-                            <span class="rank-pos">#1 na região</span>
-                            <span class="rank-fonte">Destaque Internacional</span>
-                        </div>
                         <div class="botoes-grupo">
                             <a href="${siteUrl}" target="_blank" rel="noopener noreferrer" class="btn-detalhes">Ver detalhes</a>
                             <button class="btn-favorito" title="Salvar">🔖</button>
@@ -171,8 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
         listaUniversidades.innerHTML = cardsHTML.join('');
     }
 
-    // Eventos
-    btnAplicar.addEventListener('click', buscarUniversidades);
+    // Ouvintes de evento
+    if (btnAplicar) btnAplicar.addEventListener('click', buscarUniversidades);
 
     if (inputBusca) {
         inputBusca.addEventListener('keyup', (e) => {
@@ -180,15 +196,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    btnLimpar.addEventListener('click', () => {
-        if (inputBusca) inputBusca.value = "";
-        selectPais.value = "";
-        selectArea.value = "";
-        selectNivel.value = "";
-        selectIdioma.value = "";
-        listaUniversidades.innerHTML = "";
-        totalUniversidades.textContent = "0 universidades encontradas";
-    });
+    if (btnLimpar) {
+        btnLimpar.addEventListener('click', () => {
+            if (inputBusca) inputBusca.value = "";
+            if (selectPais) selectPais.value = "";
+            if (selectArea) selectArea.value = "";
+            if (selectNivel) selectNivel.value = "";
+            if (selectIdioma) selectIdioma.value = "";
+            listaUniversidades.innerHTML = "";
+            totalUniversidades.textContent = "0 universidades encontradas";
+        });
+    }
 
+    // Inicialização integrada
     popularSelectPaises();
+    integrarSharedNavbar();
 });
