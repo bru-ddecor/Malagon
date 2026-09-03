@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cadastroBtn = document.querySelector('.btn-cadastro');
   const loginBtn = document.querySelector('.btn-login');
 
-  // Alterna para a tela de cadastro
+  // Alterna para a tela
   if (cadastroBtn) {
     cadastroBtn.addEventListener('click', () => {
       container.classList.add('active');
