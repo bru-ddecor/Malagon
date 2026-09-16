@@ -10,23 +10,65 @@
 </head>
 <body>
 
-    <!-- CONTEUDO PRINCIPAL -->
     <div class="page-wrapper">
 
-        <!-- CABECALHO -->
+        <!-- CABEÇALHO -->
         <div class="page-header">
             <div class="header-left">
-                <h1>Simulador de Visto</h1>
-                <p>Complete seu checklist obrigatório para garantir a aprovação do seu processo de Intercâmbio.</p>
+                <h1>Checklist do Visto</h1>
+                <p>Escolha o destino e a data prevista de embarque. O sistema monta a lista de documentos e calcula até quando cada etapa deveria estar pronta.</p>
             </div>
             <div class="progresso-box">
                 <span class="prog-label">PROGRESSO GERAL</span>
-                <span class="prog-valor">68%</span>
+                <span class="prog-valor" id="progValor">0%</span>
                 <div class="prog-bar-wrap">
-                    <div class="prog-bar" style="width: 68%"></div>
+                    <div class="prog-bar" id="progBar" style="width: 0%"></div>
                 </div>
+                <span class="prog-detalhe" id="progDetalhe">—</span>
             </div>
         </div>
+
+        <!-- CONTROLES -->
+        <section class="barra-controle">
+            <div class="controle-grupo">
+                <label for="paisSelect">País de destino</label>
+                <div class="select-wrap">
+                    <select id="paisSelect">
+                        <option value="ES">🇪🇸 Espanha</option>
+                        <option value="PT">🇵🇹 Portugal</option>
+                        <option value="DE">🇩🇪 Alemanha</option>
+                        <option value="FR">🇫🇷 França</option>
+                        <option value="IT">🇮🇹 Itália</option>
+                        <option value="NL">🇳🇱 Países Baixos</option>
+                        <option value="PL">🇵🇱 Polônia</option>
+                        <option value="CZ">🇨🇿 República Tcheca</option>
+                        <option value="SE">🇸🇪 Suécia</option>
+                        <option value="NO">🇳🇴 Noruega</option>
+                        <option value="CH">🇨🇭 Suíça</option>
+                        <option value="GB">🇬🇧 Reino Unido</option>
+                        <option value="US">🇺🇸 Estados Unidos</option>
+                        <option value="CA">🇨🇦 Canadá</option>
+                        <option value="AU">🇦🇺 Austrália</option>
+                        <option value="JP">🇯🇵 Japão</option>
+                    </select>
+                    <span class="select-arrow" aria-hidden="true">▾</span>
+                </div>
+            </div>
+
+            <div class="controle-grupo">
+                <label for="dataEmbarque">Data prevista de embarque</label>
+                <input type="date" id="dataEmbarque">
+            </div>
+
+            <div class="controle-acoes">
+                <label class="chip-toggle">
+                    <input type="checkbox" id="chkPendentes">
+                    <span>Só pendentes</span>
+                </label>
+                <button class="btn-secundario" id="btnImprimir" type="button">Imprimir</button>
+                <button class="btn-secundario" id="btnLimpar" type="button">Limpar</button>
+            </div>
+        </section>
 
         <!-- GRID PRINCIPAL -->
         <div class="main-grid">
@@ -36,113 +78,38 @@
 
                 <div class="section-card">
                     <div class="section-title-row">
-                        <span class="section-title">Checklist Obrigatório</span>
-                        <span class="items-restantes">4 ITENS RESTANTES</span>
+                        <span class="section-title">Documentos e etapas</span>
+                        <span class="items-restantes" id="itensRestantes">—</span>
                     </div>
 
-                    <div class="checklist-item checked">
-                        <div class="check-box checked">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <path d="M2 7L5.5 10.5L12 3.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="item-info">
-                            <span class="item-nome">Valid Passport</span>
-                            <span class="item-sub">EXPIRAÇÃO: JUN 2026</span>
-                        </div>
-                        <span class="badge valid">VALID</span>
-                    </div>
-
-                    <div class="checklist-item">
-                        <div class="check-box"></div>
-                        <div class="item-info">
-                            <span class="item-nome">Criminal Record</span>
-                            <span class="item-sub">AGUARDANDO EMISSÃO OFICIAL</span>
-                        </div>
-                        <span class="badge pending">PENDING</span>
-                    </div>
-
-                    <div class="checklist-item checked">
-                        <div class="check-box checked">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <path d="M2 7L5.5 10.5L12 3.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="item-info">
-                            <span class="item-nome">Proof of Funds</span>
-                            <span class="item-sub">EXTRATOS BANCÁRIOS (3 MESES)</span>
-                        </div>
-                        <span class="badge valid">VALID</span>
-                    </div>
-
-                    <div class="checklist-item">
-                        <div class="check-box"></div>
-                        <div class="item-info">
-                            <span class="item-nome">Health Insurance</span>
-                            <span class="item-sub">SEGURO UMA INTERNACIONAL MÍNIMA: €30k</span>
-                        </div>
-                        <span class="badge pending">PENDING</span>
-                    </div>
+                    <div id="listaFases"></div>
                 </div>
 
                 <div class="aviso-card">
-                    <span class="aviso-icon">ℹ️</span>
-                    <p>Documentos pendentes podem atrasar sua entrevista em até +15 dias úteis**. Recomendamos o upload imediato.</p>
+                    <span class="aviso-icon" aria-hidden="true">ℹ️</span>
+                    <p>Os prazos são recomendações baseadas no tempo médio de emissão de cada documento. As exigências mudam com frequência — confirme sempre no site oficial do consulado do país escolhido.</p>
                 </div>
-
-                <button class="btn-simulacao">NEW SIMULATION →</button>
             </div>
 
             <!-- COLUNA DIREITA -->
             <div class="col-right">
 
-                <div class="section-card dicas-card">
-                    <span class="section-title">Dicas de Especialista</span>
-
-                    <div class="dica-item">
-                        <div class="dica-icon">🛂</div>
-                        <div class="dica-texto">
-                            <span class="dica-titulo">Foto do Passaporte</span>
-                            <p>Garanta que não haja reflexo na foto na página de identificação ao digitalizar.</p>
-                        </div>
-                    </div>
-
-                    <div class="dica-item">
-                        <div class="dica-icon">📄</div>
-                        <div class="dica-texto">
-                            <span class="dica-titulo">Tradução Juramentada</span>
-                            <p>Alguns consulados exigem tradução de extratos bancários para o idioma local.</p>
-                        </div>
-                    </div>
-
-                    <div class="ajuda-box">
-                        <span class="ajuda-titulo">Precisa de ajuda?</span>
-                        <p>Nossos consultores especializados em vistos estão disponíveis para revisão manual.</p>
-                        <button class="btn-consultor">FALAR COM CONSULTOR</button>
-                    </div>
+                <div class="section-card proximo-card">
+                    <span class="section-title">Próximo passo</span>
+                    <p class="proximo-nome" id="proximoPasso">—</p>
+                    <p class="alerta-prazo" id="alertaPrazo"></p>
                 </div>
 
-                <div class="section-card indice-card">
-                    <div class="indice-header">
-                        <span class="section-title">Índice de Aprovação</span>
-                        <span class="indice-tag">+12% este mês</span>
-                    </div>
-                    <p class="indice-sub">Dados baseados em 2.4k processos recentes</p>
-                    <div class="barras">
-                        <div class="barra" style="height:30px; background:#ff7a00;"></div>
-                        <div class="barra" style="height:50px; background:#ff7a00;"></div>
-                        <div class="barra" style="height:40px; background:#ff7a00;"></div>
-                        <div class="barra" style="height:70px; background:#ff7a00;"></div>
-                        <div class="barra" style="height:55px; background:#ff7a00;"></div>
-                        <div class="barra" style="height:90px; background:#4caf50;"></div>
-                        <div class="barra" style="height:75px; background:#4caf50;"></div>
-                    </div>
+                <div class="section-card dicas-card">
+                    <span class="section-title">Dicas para não travar o processo</span>
+                    <div id="dicasLista"></div>
                 </div>
 
             </div>
         </div>
     </div>
 
+    <script src="visto.js"></script>
     <script src="../shared/navbar.js"></script>
 </body>
 </html>

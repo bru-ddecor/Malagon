@@ -6,8 +6,8 @@
 }
 
 body {
-    background: #090a0f;
-    color: #ffffff;
+    background: var(--bg-body);
+    color: var(--color-text);
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -226,6 +226,13 @@ body {
 .item-icone { font-size: 16px; }
 .item-nome { font-size: 13px; font-weight: 500; color: #ddd; }
 
+.item-valores {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
 .item-valor {
     font-size: 14px;
     font-weight: 700;
@@ -234,6 +241,12 @@ body {
 
 .item-valor.subiu { color: #ff6b6b; }
 .item-valor.desceu { color: #4caf50; }
+
+.item-valor-brl {
+    font-size: 11px;
+    font-weight: 500;
+    color: #777;
+}
 
 /* CAIXA DE TOTAL MENSAL */
 .total-destaque-box {
@@ -499,4 +512,364 @@ input[type="range"]::-webkit-slider-thumb {
     .footer-cards { grid-template-columns: 1fr; }
     .page-wrapper { padding: 90px 16px 40px; }
     .page-header { flex-direction: column; }
+}
+/* =============================================
+   AJUSTES DE PERFIL (moradia / seguro)
+   ============================================= */
+.ajustes-perfil {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.chip-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 13px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    font-size: 12px;
+    color: #999;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.chip-toggle:hover { border-color: rgba(255, 122, 0, 0.35); }
+
+.chip-toggle input {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.chip-toggle input:checked {
+    background: #ff7a00;
+    border-color: #ff7a00;
+}
+
+.chip-toggle input:checked::after {
+    content: '✓';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #000;
+}
+
+.chip-toggle input:focus-visible {
+    outline: 2px solid #ff7a00;
+    outline-offset: 2px;
+}
+
+.chip-toggle:has(input:checked) {
+    border-color: rgba(255, 122, 0, 0.4);
+    background: rgba(255, 122, 0, 0.07);
+    color: #fff;
+}
+
+/* =============================================
+   SLIDERS
+   ============================================= */
+.slider-limites { align-items: center; }
+
+.slider-conversao {
+    color: #ff7a00;
+    font-weight: 600;
+    text-align: center;
+    flex: 1;
+}
+
+input[type="range"]:focus-visible {
+    outline: 2px solid #ff7a00;
+    outline-offset: 4px;
+}
+
+/* =============================================
+   CARDS DE RESULTADO
+   ============================================= */
+.res-card.info {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.res-card > div:last-child { min-width: 0; }
+.res-sub { word-break: break-word; }
+
+/* =============================================
+   CUSTOS DE INSTALAÇÃO
+   ============================================= */
+.card-instalacao { margin-bottom: 24px; }
+
+.setup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 28px;
+}
+
+.setup-grid li { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+
+/* =============================================
+   MODAL — RODAPÉ
+   ============================================= */
+.modal-footer {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.btn-pdf {
+    background: #ff7a00;
+    color: #000;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-pdf:hover { background: #e06d00; }
+
+/* =============================================
+   RESPONSIVO
+   ============================================= */
+@media (max-width: 900px) {
+    .resultados-grid { grid-template-columns: 1fr; }
+    .setup-grid { grid-template-columns: 1fr; }
+    .total-destaque-box { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .total-aviso { text-align: left; max-width: none; }
+    .slider-conversao { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+    .btn-acao-principal:hover { transform: none; }
+}
+
+/* =============================================
+   TEMA CLARO
+   ============================================= */
+[data-theme="light"] .page-header h1 { color: #111; }
+[data-theme="light"] .subtitulo { color: #888; }
+
+[data-theme="light"] .cambio-box {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .cambio-label { color: #888; }
+[data-theme="light"] .cambio-valor { color: #111; }
+[data-theme="light"] .cambio-sub { color: #888; }
+
+[data-theme="light"] .barra-controle {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .seletor-grupo label { color: #666; }
+[data-theme="light"] .select-wrap select {
+    background: #f6f6f6;
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #111;
+}
+[data-theme="light"] .select-wrap select option { background: #fff; }
+[data-theme="light"] .status-banco { color: #888; }
+
+[data-theme="light"] .card-painel {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .tag-secao { color: #999; }
+[data-theme="light"] .card-header-painel h2 { color: #111; }
+[data-theme="light"] .pais-badge {
+    background: rgba(255, 122, 0, 0.08);
+    border-color: rgba(255, 122, 0, 0.25);
+}
+
+[data-theme="light"] .custos-lista li { border-color: rgba(0, 0, 0, 0.06); }
+[data-theme="light"] .item-nome { color: #222; }
+[data-theme="light"] .item-valor { color: #111; }
+[data-theme="light"] .item-valor-brl { color: #999; }
+
+[data-theme="light"] .slider-topo { color: #777; }
+[data-theme="light"] .slider-topo strong { color: #111; }
+[data-theme="light"] input[type="range"] { background: rgba(0, 0, 0, 0.1); }
+
+[data-theme="light"] .res-card {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .res-card.info {
+    background: rgba(0, 0, 0, 0.015);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .res-titulo { color: #111; }
+[data-theme="light"] .res-sub { color: #777; }
+
+[data-theme="light"] .info-mini-card {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.07);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+[data-theme="light"] .info-mini-card h4 { color: #111; }
+[data-theme="light"] .info-mini-card p { color: #777; }
+
+[data-theme="light"] .modal {
+    background: #fdfcfb;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .modal-header h2 { color: #111; }
+[data-theme="light"] .modal-fechar { color: #888; }
+[data-theme="light"] .modal-fechar:hover { color: #111; }
+[data-theme="light"] .modal-secao h3 { color: #e06d00; }
+[data-theme="light"] .modal-linha { color: #555; border-color: rgba(0, 0, 0, 0.06); }
+[data-theme="light"] .modal-linha span:last-child { color: #111; }
+[data-theme="light"] .modal-aviso {
+    background: rgba(255, 122, 0, 0.06);
+    border-color: rgba(255, 122, 0, 0.18);
+    color: #777;
+}
+[data-theme="light"] .modal-footer { border-color: rgba(0, 0, 0, 0.06); }
+
+[data-theme="light"] .chip-toggle {
+    color: #666;
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.015);
+}
+[data-theme="light"] .chip-toggle input { border-color: rgba(0, 0, 0, 0.25); }
+[data-theme="light"] .chip-toggle:has(input:checked) { color: #111; }
+
+[data-theme="light"] .setup-grid li { border-color: rgba(0, 0, 0, 0.06); }
+
+/* =============================================
+   COMPARAÇÃO ENTRE DESTINOS
+   ============================================= */
+.card-comparar { margin-bottom: 24px; }
+
+.comparar-instrucao {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.comparar-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.chip-pais { font-size: 12px; }
+
+.comparar-aviso {
+    font-size: 11px;
+    color: #ff6b6b;
+    min-height: 16px;
+    margin-bottom: 8px;
+}
+
+.comparar-vazio {
+    font-size: 13px;
+    color: #777;
+    padding: 20px 0;
+}
+
+.comparar-resultado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.comparar-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.comparar-titulo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 122, 0, 0.2);
+}
+
+.comparar-linha {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 11px;
+    color: #999;
+    padding: 5px 0;
+}
+
+.comparar-linha span:last-child {
+    font-weight: 600;
+    color: #ddd;
+    text-align: right;
+}
+
+.comparar-selo {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.comparar-selo.ok {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.25);
+    color: #4caf50;
+}
+
+.comparar-selo.perigo {
+    background: rgba(255, 50, 50, 0.08);
+    border: 1px solid rgba(255, 50, 50, 0.2);
+    color: #ff6b6b;
+}
+
+.comparar-selo.info {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #999;
+}
+
+/* Tema claro */
+[data-theme="light"] .comparar-instrucao { color: #777; }
+[data-theme="light"] .comparar-vazio { color: #777; }
+[data-theme="light"] .comparar-card {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .comparar-titulo { color: #111; }
+[data-theme="light"] .comparar-linha span:last-child { color: #222; }
+
+/* Responsivo */
+@media (max-width: 640px) {
+    .comparar-resultado { grid-template-columns: 1fr; }
 }
