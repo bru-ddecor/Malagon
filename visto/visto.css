@@ -400,3 +400,293 @@ body {
     background: rgba(76,175,80,0.12);
     color: #2e7d32;
 }
+
+/* =============================================
+   CHECKLIST INTERATIVO — ADIÇÕES
+   ============================================= */
+
+/* Contraste do subtítulo dos itens (era #555 sobre fundo escuro) */
+.item-sub { color: #8a8a8a; letter-spacing: 0.2px; line-height: 1.4; }
+
+.prog-detalhe {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    margin-top: 8px;
+}
+
+/* ---------- BARRA DE CONTROLE ---------- */
+.barra-controle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+}
+
+.controle-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.controle-grupo label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #888;
+}
+
+.select-wrap { position: relative; }
+
+.select-wrap select,
+#dataEmbarque {
+    appearance: none;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 13px;
+    font-family: inherit;
+    padding: 11px 38px 11px 14px;
+    min-width: 220px;
+    cursor: pointer;
+}
+
+#dataEmbarque { padding-right: 14px; min-width: 190px; }
+.select-wrap select option { background: #141518; }
+
+.select-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff7a00;
+    pointer-events: none;
+    font-size: 12px;
+}
+
+.controle-acoes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.btn-secundario {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #bbb;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secundario:hover {
+    border-color: rgba(255, 122, 0, 0.5);
+    color: #fff;
+}
+
+.chip-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.02);
+    font-size: 12px;
+    color: #999;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.chip-toggle input {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.chip-toggle input:checked { background: #ff7a00; border-color: #ff7a00; }
+
+.chip-toggle input:checked::after {
+    content: '✓';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #000;
+}
+
+.chip-toggle:has(input:checked) {
+    border-color: rgba(255, 122, 0, 0.4);
+    background: rgba(255, 122, 0, 0.07);
+    color: #fff;
+}
+
+/* ---------- BLOCOS DE FASE ---------- */
+.fase-bloco { margin-bottom: 26px; }
+.fase-bloco:last-child { margin-bottom: 0; }
+
+.fase-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 122, 0, 0.2);
+}
+
+.fase-icone { font-size: 17px; }
+
+.fase-titulo { flex: 1; display: flex; flex-direction: column; }
+.fase-titulo strong { font-size: 13px; font-weight: 600; color: #fff; }
+.fase-titulo span { font-size: 11px; color: #777; margin-top: 2px; }
+
+.fase-contador {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ff7a00;
+    background: rgba(255, 122, 0, 0.1);
+    border: 1px solid rgba(255, 122, 0, 0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+/* ---------- ITENS CLICÁVEIS ---------- */
+.checklist-item { position: relative; cursor: pointer; transition: opacity 0.2s; }
+.checklist-item:hover .item-nome { color: #ff9a30; }
+.checklist-item.checked { opacity: 0.55; }
+.checklist-item.checked .item-nome { text-decoration: line-through; }
+
+.check-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.check-box svg { opacity: 0; }
+.check-box.checked svg { opacity: 1; }
+
+.check-input:focus-visible + .check-box {
+    outline: 2px solid #ff7a00;
+    outline-offset: 3px;
+}
+
+.lista-vazia {
+    font-size: 13px;
+    color: #777;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* ---------- BADGES EXTRAS ---------- */
+.badge { white-space: nowrap; text-transform: none; letter-spacing: 0.3px; }
+
+.badge.urgente {
+    background: rgba(255, 122, 0, 0.12);
+    border: 1px solid rgba(255, 122, 0, 0.3);
+    color: #ff7a00;
+}
+
+.badge.atrasado {
+    background: rgba(255, 60, 60, 0.12);
+    border: 1px solid rgba(255, 60, 60, 0.3);
+    color: #ff6b6b;
+}
+
+/* ---------- PRÓXIMO PASSO ---------- */
+.proximo-card { border-left: 3px solid #ff7a00; }
+
+.proximo-nome {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.35;
+    margin-bottom: 8px;
+}
+
+.alerta-prazo { font-size: 12px; color: #888; line-height: 1.5; }
+.alerta-prazo.urgente { color: #ff7a00; font-weight: 600; }
+.alerta-prazo.perigo  { color: #ff6b6b; font-weight: 600; }
+
+/* ---------- TEMA CLARO ---------- */
+[data-theme="light"] .barra-controle {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .controle-grupo label { color: #666; }
+[data-theme="light"] .select-wrap select,
+[data-theme="light"] #dataEmbarque {
+    background: #f6f6f6;
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #111;
+}
+[data-theme="light"] .select-wrap select option { background: #fff; }
+[data-theme="light"] .btn-secundario { color: #555; border-color: rgba(0, 0, 0, 0.15); }
+[data-theme="light"] .btn-secundario:hover { color: #111; }
+[data-theme="light"] .chip-toggle { color: #555; border-color: rgba(0, 0, 0, 0.12); }
+[data-theme="light"] .chip-toggle input { border-color: rgba(0, 0, 0, 0.25); }
+[data-theme="light"] .chip-toggle:has(input:checked) { color: #111; }
+[data-theme="light"] .fase-titulo strong { color: #111; }
+[data-theme="light"] .fase-titulo span { color: #777; }
+[data-theme="light"] .proximo-nome { color: #111; }
+[data-theme="light"] .prog-detalhe { color: #777; }
+[data-theme="light"] .lista-vazia { color: #777; }
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 980px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .controle-acoes { margin-left: 0; width: 100%; }
+    .select-wrap select, #dataEmbarque { min-width: 0; width: 100%; }
+    .controle-grupo { width: 100%; }
+    .page-header { flex-direction: column; }
+    .page-wrapper { padding: 95px 16px 40px; }
+}
+
+@media (max-width: 560px) {
+    .checklist-item { flex-wrap: wrap; }
+    .badge { margin-left: 36px; }
+}
+
+/* ---------- IMPRESSÃO ---------- */
+@media print {
+    body { background: #fff !important; color: #000 !important; }
+    .navbar, .barra-controle, .controle-acoes, .col-right, .aviso-icon { display: none !important; }
+    .main-grid { grid-template-columns: 1fr; }
+    .page-wrapper { padding: 0; max-width: none; }
+    .section-card, .progresso-box {
+        background: #fff !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+    }
+    .item-nome, .fase-titulo strong, .page-header h1, .section-title { color: #000 !important; }
+    .item-sub, .page-header p { color: #444 !important; }
+    .checklist-item.checked { opacity: 1; }
+    .check-box { border-color: #555 !important; }
+    .fase-bloco { break-inside: avoid; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+}
