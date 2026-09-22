@@ -361,6 +361,20 @@ select option:hover {
     background: var(--bg-body);
 }
 
+/* Os tiles padrão do OpenStreetMap são claros; escurecemos só a camada
+   de tiles com um filtro CSS, pra combinar com o tema escuro do site,
+   sem depender de um provedor de mapa escuro que exige chave de API. */
+:root:not([data-theme="light"]) .leaflet-tile-pane {
+    filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.9) saturate(0.6);
+}
+
+/* Marcadores e a linha da rota não devem sofrer o filtro acima */
+.leaflet-marker-pane,
+.leaflet-overlay-pane,
+.leaflet-popup-pane {
+    filter: none;
+}
+
 /* ====================== RESPONSIVO ====================== */
 @media (max-width: 900px) {
     .main-grid {
@@ -380,3 +394,135 @@ select option:hover {
         flex-wrap: wrap;
     }
 }
+
+/* ====================== BADGE DE PAÍS ====================== */
+.pais-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-muted);
+    margin-left: 4px;
+    min-height: 16px;
+}
+
+.pais-badge.ativo { color: var(--color-logo); }
+
+/* ====================== SALVAR DESTINO ====================== */
+.salvar-destino-row {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-salvar-destino {
+    background: transparent;
+    border: 1px solid rgba(255, 122, 0, 0.35);
+    color: var(--color-logo);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-salvar-destino:hover:not(:disabled) {
+    background: rgba(255, 122, 0, 0.1);
+}
+
+.btn-salvar-destino:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.salvar-feedback {
+    font-size: 12px;
+    color: #4caf50;
+    font-weight: 600;
+}
+
+/* ====================== CARD DE FUSO HORÁRIO ====================== */
+.stat-valor-menor { font-size: 22px; margin: 4px 0 8px; }
+
+.fuso-aviso {
+    font-size: 10px;
+    color: var(--color-muted);
+    line-height: 1.4;
+}
+
+/* ====================== ROTEIRO PASSO A PASSO ====================== */
+.roteiro-card { margin-top: 24px; }
+
+.roteiro-card .indice-sub { margin-bottom: 18px; max-width: 640px; }
+
+.roteiro-container { margin-top: 18px; }
+
+.roteiro-status {
+    font-size: 13px;
+    color: var(--color-muted);
+    padding: 12px 0;
+}
+
+.roteiro-status.erro { color: #ff6b6b; }
+
+.roteiro-passo {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.roteiro-passo:last-child { border-bottom: none; padding-bottom: 0; }
+.roteiro-passo:first-child { padding-top: 0; }
+
+.roteiro-numero {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255, 122, 0, 0.12);
+    border: 1px solid rgba(255, 122, 0, 0.35);
+    color: var(--color-logo);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roteiro-corpo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.roteiro-corpo strong {
+    font-size: 14px;
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.roteiro-info {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-logo);
+}
+
+.roteiro-corpo p {
+    font-size: 12px;
+    color: var(--color-muted);
+    line-height: 1.5;
+    margin-top: 2px;
+}
+
+.roteiro-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-logo);
+    text-decoration: none;
+    margin-top: 2px;
+}
+
+.roteiro-link:hover { text-decoration: underline; }

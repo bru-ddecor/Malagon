@@ -58,11 +58,19 @@
                     <input type="text" id="destinoInput" placeholder="Digite o nome de uma cidade..." autocomplete="off">
                     <ul class="sugestoes" id="destinoSugestoes"></ul>
                   </div>
+                  <span class="pais-badge" id="destinoPaisBadge"></span>
                 </div>
               </div>
             </div>
 
             <button class="confirmar" onclick="atualizarMapa()">Confirmar Seleção →</button>
+
+            <div class="salvar-destino-row">
+              <button class="btn-salvar-destino" id="btnSalvarDestino" type="button">
+                💾 Usar este destino no simulador
+              </button>
+              <span class="salvar-feedback" id="salvarFeedback"></span>
+            </div>
           </div>
         </div>
 
@@ -84,17 +92,11 @@
 
           <div class="section-card">
             <div class="indice-header">
-              <span class="section-title">STATUS DA ROTA</span>
-              <span class="indice-tag">● Sincronizado</span>
+              <span class="section-title">FUSO HORÁRIO</span>
             </div>
-            <p class="indice-sub">Atualizado em tempo real conforme a seleção</p>
-            <div class="barras">
-              <div class="barra" style="height:30%; background:#ff7a00;"></div>
-              <div class="barra" style="height:55%; background:#ff7a00;"></div>
-              <div class="barra" style="height:40%; background:#ff7a00;"></div>
-              <div class="barra" style="height:70%; background:#ff7a00;"></div>
-              <div class="barra" style="height:50%; background:#ff7a00;"></div>
-            </div>
+            <p class="indice-sub" id="fusoDiferenca">—</p>
+            <p class="stat-valor stat-valor-menor" id="horaDestino">--:--</p>
+            <p class="fuso-aviso">Estimativa a partir da longitude — pode não bater com o fuso oficial do país.</p>
           </div>
 
         </div>
@@ -103,6 +105,25 @@
       <!-- MAPA -->
       <div class="map-card">
         <div id="map"></div>
+      </div>
+
+      <!-- PASSO A PASSO ATÉ O DESTINO -->
+      <div class="section-card roteiro-card">
+        <div class="indice-header">
+          <span class="section-title">PASSO A PASSO ATÉ O DESTINO</span>
+        </div>
+        <p class="indice-sub">
+          Aeroporto real mais próximo de cada ponto, a partir de uma base de dados carregada com a
+          página (sem depender de nenhum serviço externo no momento da busca). O trecho dentro da
+          cidade (ônibus, trem, táxi) varia demais para cravar aqui — o roteiro mostra o que
+          pesquisar em cada etapa.
+        </p>
+
+        <button class="btn-salvar-destino" id="btnGerarRoteiro" type="button">
+          🧭 Gerar passo a passo
+        </button>
+
+        <div class="roteiro-container" id="roteiroContainer"></div>
       </div>
 
     </div>
